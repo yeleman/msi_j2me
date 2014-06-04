@@ -1,0 +1,10 @@
+MIDlet-1: MsiMIDlet,,msi_sr.MsiMidlet
+MIDlet-Vendor: yɛlɛman s.à.r.l
+MIDlet-Name: MSI
+MIDlet-Delete-Notify: Merci d'avoir installer le MSI
+MIDlet-Delete-Confirm: Êtes-vous sûr de vouloir supprimer le MSI?
+MIDlet-Icon: msi.png
+MIDlet-Description: 
+MIDlet-Version: 1.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0
