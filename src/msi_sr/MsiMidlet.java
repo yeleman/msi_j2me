@@ -12,6 +12,7 @@ import msi_sr.SMSStore.*;
 import msi_sr.StoredSMS.*;
 import msi_sr.OptionForm.*;
 import msi_sr.ServiceForm.*;
+import msi_sr.FinancialFrom.*;
 import msi_sr.Constants.*;
 import msi_sr.Configuration.*;
 import msi_sr.SendSavedReports.*;
@@ -39,26 +40,26 @@ public class MsiMidlet extends MIDlet implements CommandListener {
 
     public void startApp() {
 
-    config = new Configuration();
-    SMSStore store = new SMSStore();
+        config = new Configuration();
+        SMSStore store = new SMSStore();
 
-    String[] mainMenu_ = {"Rapport service", "Rapport financier", "Rapport stocks",
-                          "Renvoi form. (" + store.count() + ")"};
+        String[] mainMenu_ = {"Rapport service", "Rapport financier", "Rapport stocks",
+                              "Renvoi form. (" + store.count() + ")"};
 
-    if(config.get("user_name").equals("")){
-        OptionForm f = new OptionForm(this);
-        display.setCurrent(f);
-    } else{
-        mainMenu = new List("Formulaires", Choice.IMPLICIT, mainMenu_, null);
-        // setup menu
-        mainMenu.setCommandListener (this);
-        mainMenu.addCommand (CMD_EXIT);
-        mainMenu.addCommand (CMD_HELP);
-        mainMenu.addCommand (CMD_VERSION);
-        mainMenu.addCommand (CMD_SRVNUM);
-        mainMenu.addCommand (CMD_PASSWD);
-        display.setCurrent(mainMenu);
-    }
+        if(config.get("user_name").equals("")){
+            OptionForm f = new OptionForm(this);
+            display.setCurrent(f);
+        } else{
+            mainMenu = new List("Formulaires", Choice.IMPLICIT, mainMenu_, null);
+            // setup menu
+            mainMenu.setCommandListener (this);
+            mainMenu.addCommand (CMD_EXIT);
+            mainMenu.addCommand (CMD_HELP);
+            mainMenu.addCommand (CMD_VERSION);
+            mainMenu.addCommand (CMD_SRVNUM);
+            mainMenu.addCommand (CMD_PASSWD);
+            display.setCurrent(mainMenu);
+        }
     }
 
     public void pauseApp() {
@@ -80,8 +81,8 @@ public class MsiMidlet extends MIDlet implements CommandListener {
                     display.setCurrent(service_form);
                     break;
                 case 1:
-                    // FinancialFrom financial_form = new FinancialFrom(this);
-                    // display.setCurrent(financial_form);
+                    FinancialFrom financial_form = new FinancialFrom(this);
+                    display.setCurrent(financial_form);
                     break;
                 case 2:
                     // StockFrom stock_from = new StockFrom(this);

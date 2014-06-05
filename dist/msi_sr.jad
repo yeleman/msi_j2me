@@ -3,7 +3,7 @@ MIDlet-Delete-Confirm: Êtes-vous sûr de vouloir supprimer le MSI?
 MIDlet-Delete-Notify: Merci d'avoir installer le MSI
 MIDlet-Description: 
 MIDlet-Icon: msi.png
-MIDlet-Jar-Size: 25465
+MIDlet-Jar-Size: 27449
 MIDlet-Jar-URL: msi_sr.jar
 MIDlet-Name: MSI
 MIDlet-Vendor: yɛlɛman s.à.r.l
