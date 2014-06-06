@@ -17,7 +17,7 @@ public class OptionForm extends Form implements CommandListener {
     private static final Command CMD_SAVE = new Command ("Enreg.", Command.OK, 2);
     private static final Command CMD_HELP = new Command ("Aide", Command.HELP, 4);
 
-    MsiMidlet midlet;
+    MsiMIDlet midlet;
     //Displayable returnTo;
     private String ErrorMessage = "";
 
@@ -25,7 +25,7 @@ public class OptionForm extends Form implements CommandListener {
     private TextField numberField;
     private TextField user_nameField;
 
-public OptionForm(MsiMidlet midlet) {
+public OptionForm(MsiMIDlet midlet) {
     super("Paramètres de transmission");
     this.midlet = midlet;
 

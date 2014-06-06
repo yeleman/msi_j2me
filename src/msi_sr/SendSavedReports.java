@@ -17,12 +17,12 @@ public class SendSavedReports extends List implements CommandListener {
     private static final Command CMD_SEND_ALL = new Command ("Tout envoyer.", Command.OK, 1);
     private static final Command CMD_DELETE = new Command ("Supprimer.", Command.OK, 1);
 
-    public MsiMidlet midlet;
+    public MsiMIDlet midlet;
     private Configuration config;
     private SMSStore store;
     private StoredSMS[] all_sms;
 
-    public SendSavedReports(MsiMidlet midlet) {
+    public SendSavedReports(MsiMIDlet midlet) {
         super("Formulaires enregistrés", Choice.IMPLICIT);
         this.midlet = midlet;
 

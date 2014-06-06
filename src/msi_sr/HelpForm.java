@@ -18,11 +18,11 @@ public class HelpForm extends Form implements CommandListener {
                                                         Command.BACK, 1);
 
     private StringItem helpText;
-    MsiMidlet midlet;
+    MsiMIDlet midlet;
     Displayable returnTo;
 
 
-    public HelpForm(MsiMidlet midlet, Displayable d, String section) {
+    public HelpForm(MsiMIDlet midlet, Displayable d, String section) {
         super("Aide");
         this.midlet = midlet;
         this.returnTo = d;

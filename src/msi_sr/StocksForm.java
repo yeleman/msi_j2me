@@ -15,7 +15,7 @@ import msi_sr.StocksReport.*;
  * Saves into the DB.
  * @author rgaudin
  */
-public class ServiceForm extends Form implements CommandListener {
+public class StocksForm extends Form implements CommandListener {
 
     private static final Command CMD_EXIT = new Command ("Retour", Command.BACK, 1);
     private static final Command CMD_SAVE = new Command ("Enregistrer", Command.OK, 1);
@@ -36,7 +36,7 @@ public class ServiceForm extends Form implements CommandListener {
     private ChoiceGroup stockout_rdt;
     private ChoiceGroup stockout_sp;
 
-public ServiceForm(MsiMIDlet midlet) {
+public StocksForm(MsiMIDlet midlet) {
     super("Ruptures de Stock.");
     this.midlet = midlet;
 

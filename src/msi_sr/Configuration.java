@@ -1,3 +1,4 @@
+
 package msi_sr;
 
 import javax.microedition.rms.*;
@@ -6,14 +7,18 @@ import msi_sr.Constants.*;
 
 /**
  * Store defined values into RMS
- * @author fadiga
+ * @author rgaudin
  */
-
 public class Configuration {
+
+    private String username;
+    private String server_number;
+    private String has_data;
 
     // index 0 is invalid
     private int server_number_index = 1;
-    private int user_name_index = 2;
+    private int has_data_index = 2;
+    private int username_index = 3;
 
     private static final String database = "configuration";
     private RecordStore recordstore = null;
@@ -27,11 +32,12 @@ public class Configuration {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        if (recordEnumeration.numRecords() < 5) {
+        if (recordEnumeration.numRecords() < 4) {
             // the following has to be in order of indexes.
-            // Todo change les valeurs par defaut pour
-            this.set("server_number", Constants.server_number, true);
-            this.set("user_name", "", true);
+            this.set("server_number", "xxx", true);
+            this.set("has_data", "false", true);
+            this.set("username", "", true);
+            this.set("server_number", Constants.server_number, false);
         }
     }
 
@@ -49,9 +55,10 @@ public class Configuration {
             return value;
         }
 
-        try {
+        try
+        {
         // open record store
-        recordstore = RecordStore.openRecordStore(Configuration.database, true);
+        recordstore = RecordStore.openRecordStore(Configuration.database, true );
 
         // record is internally a byte array
         byte[] byteInputData = new byte[1024];
@@ -87,10 +94,12 @@ public class Configuration {
      */
     private int index_for(String variable) {
         int index;
-        if (variable.equals("server_number")) {
+        if (variable.equals("username")) {
+            index = username_index;
+        } else if (variable.equals("server_number")) {
             index = server_number_index;
-        } else if (variable.equals("user_name")) {
-            index = user_name_index;
+        } else if (variable.equals("has_data")) {
+            index = has_data_index;
         } else {
             index = -1;
         }

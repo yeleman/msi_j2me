@@ -23,8 +23,7 @@ public class SMSSender {
         MessageConnection smsconn = null;
 
         try {
-            System.out.println("SMS Address: " + address);
-            System.out.println("SMS Text: " + message);
+            System.out.println("address: "+address);
             /** Open the message connection. */
             smsconn = (MessageConnection) Connector.open (address);
 
@@ -32,7 +31,6 @@ public class SMSSender {
             txtmessage.setAddress (address);
             txtmessage.setPayloadText (message);
             smsconn.send (txtmessage);
-            System.out.println("Send:" + message);
         }
         catch (Throwable t) {
             System.out.println ("Send caught: ");
