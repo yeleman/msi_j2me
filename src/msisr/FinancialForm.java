@@ -22,29 +22,38 @@ public class FinancialForm extends Form implements CommandListener {
     private static final Command CMD_HELP = new Command ("Aide", Command.HELP, 2);
     private static final int MAX_SIZE = 5; // max no. of chars per field.
 
+    private static final String QTY_TXT = "Quantité";
     private static final String PRICE_TXT = "Prix Unitaire";
     private static final String REVENUE_TXT = "Revenu mensuel net";
 
     public MSIMIDlet midlet;
 
     private Configuration config;
-
+    private TextField intrauterine_devices_qty;
     private TextField intrauterine_devices_price;
     private TextField intrauterine_devices_revenue;
+    private TextField implants_qty;
     private TextField implants_price;
     private TextField implants_revenue;
+    private TextField injections_qty;
     private TextField injections_price;
     private TextField injections_revenue;
+    private TextField pills_qty;
     private TextField pills_price;
     private TextField pills_revenue;
+    private TextField male_condoms_qty;
     private TextField male_condoms_price;
     private TextField male_condoms_revenue;
+    private TextField female_condoms_qty;
     private TextField female_condoms_price;
     private TextField female_condoms_revenue;
+    private TextField hiv_tests_qty;
     private TextField hiv_tests_price;
     private TextField hiv_tests_revenue;
+    private TextField iud_removal_qty;
     private TextField iud_removal_price;
     private TextField iud_removal_revenue;
+    private TextField implant_removal_qty;
     private TextField implant_removal_price;
     private TextField implant_removal_revenue;
 
@@ -55,22 +64,31 @@ public FinancialForm(MSIMIDlet midlet) {
     config = new Configuration();
 
     // creating al fields (blank)
+    intrauterine_devices_qty = new TextField(QTY_TXT, null, MAX_SIZE, TextField.NUMERIC);
     intrauterine_devices_price = new TextField(PRICE_TXT, null, MAX_SIZE, TextField.NUMERIC);
     intrauterine_devices_revenue = new TextField(REVENUE_TXT, null, MAX_SIZE, TextField.NUMERIC);
+    implants_qty = new TextField(QTY_TXT, null, MAX_SIZE, TextField.NUMERIC);
     implants_price = new TextField(PRICE_TXT, null, MAX_SIZE, TextField.NUMERIC);
     implants_revenue = new TextField(REVENUE_TXT, null, MAX_SIZE, TextField.NUMERIC);
+    injections_qty = new TextField(QTY_TXT, null, MAX_SIZE, TextField.NUMERIC);
     injections_price = new TextField(PRICE_TXT, null, MAX_SIZE, TextField.NUMERIC);
     injections_revenue = new TextField(REVENUE_TXT, null, MAX_SIZE, TextField.NUMERIC);
+    pills_qty = new TextField(QTY_TXT, null, MAX_SIZE, TextField.NUMERIC);
     pills_price = new TextField(PRICE_TXT, null, MAX_SIZE, TextField.NUMERIC);
     pills_revenue = new TextField(REVENUE_TXT, null, MAX_SIZE, TextField.NUMERIC);
+    male_condoms_qty = new TextField(QTY_TXT, null, MAX_SIZE, TextField.NUMERIC);
     male_condoms_price = new TextField(PRICE_TXT, null, MAX_SIZE, TextField.NUMERIC);
     male_condoms_revenue = new TextField(REVENUE_TXT, null, MAX_SIZE, TextField.NUMERIC);
+    female_condoms_qty = new TextField(QTY_TXT, null, MAX_SIZE, TextField.NUMERIC);
     female_condoms_price = new TextField(PRICE_TXT, null, MAX_SIZE, TextField.NUMERIC);
     female_condoms_revenue = new TextField(REVENUE_TXT, null, MAX_SIZE, TextField.NUMERIC);
+    hiv_tests_qty = new TextField(QTY_TXT, null, MAX_SIZE, TextField.NUMERIC);
     hiv_tests_price = new TextField(PRICE_TXT, null, MAX_SIZE, TextField.NUMERIC);
     hiv_tests_revenue = new TextField(REVENUE_TXT, null, MAX_SIZE, TextField.NUMERIC);
+    iud_removal_qty = new TextField(QTY_TXT, null, MAX_SIZE, TextField.NUMERIC);
     iud_removal_price = new TextField(PRICE_TXT, null, MAX_SIZE, TextField.NUMERIC);
     iud_removal_revenue = new TextField(REVENUE_TXT, null, MAX_SIZE, TextField.NUMERIC);
+    implant_removal_qty = new TextField(QTY_TXT, null, MAX_SIZE, TextField.NUMERIC);
     implant_removal_price = new TextField(PRICE_TXT, null, MAX_SIZE, TextField.NUMERIC);
     implant_removal_revenue = new TextField(REVENUE_TXT, null, MAX_SIZE, TextField.NUMERIC);
 
@@ -81,52 +99,70 @@ public FinancialForm(MSIMIDlet midlet) {
         report.loadFromStore();
 
         // assign stored value to each fields.
+        intrauterine_devices_qty.setString(valueForField(report.intrauterine_devices_qty));
         intrauterine_devices_price.setString(valueForField(report.intrauterine_devices_price));
         intrauterine_devices_revenue.setString(valueForField(report.intrauterine_devices_revenue));
+        implants_qty.setString(valueForField(report.implants_qty));
         implants_price.setString(valueForField(report.implants_price));
         implants_revenue.setString(valueForField(report.implants_revenue));
+        injections_qty.setString(valueForField(report.injections_qty));
         injections_price.setString(valueForField(report.injections_price));
         injections_revenue.setString(valueForField(report.injections_revenue));
+        pills_qty.setString(valueForField(report.pills_qty));
         pills_price.setString(valueForField(report.pills_price));
         pills_revenue.setString(valueForField(report.pills_revenue));
+        male_condoms_qty.setString(valueForField(report.male_condoms_qty));
         male_condoms_price.setString(valueForField(report.male_condoms_price));
         male_condoms_revenue.setString(valueForField(report.male_condoms_revenue));
+        female_condoms_qty.setString(valueForField(report.female_condoms_qty));
         female_condoms_price.setString(valueForField(report.female_condoms_price));
         female_condoms_revenue.setString(valueForField(report.female_condoms_revenue));
+        hiv_tests_qty.setString(valueForField(report.hiv_tests_qty));
         hiv_tests_price.setString(valueForField(report.hiv_tests_price));
         hiv_tests_revenue.setString(valueForField(report.hiv_tests_revenue));
+        iud_removal_qty.setString(valueForField(report.iud_removal_qty));
         iud_removal_price.setString(valueForField(report.iud_removal_price));
         iud_removal_revenue.setString(valueForField(report.iud_removal_revenue));
+        implant_removal_qty.setString(valueForField(report.implant_removal_qty));
         implant_removal_price.setString(valueForField(report.implant_removal_price));
         implant_removal_revenue.setString(valueForField(report.implant_removal_revenue));
     }
 
     // add fields to forms
     append("DIU");
+    append(intrauterine_devices_qty);
     append(intrauterine_devices_price);
     append(intrauterine_devices_revenue);
     append("Implant/Jadelle");
+    append(implants_qty);
     append(implants_price);
     append(implants_revenue);
     append("Injectables");
+    append(injections_qty);
     append(injections_price);
     append(injections_revenue);
     append("Pillules");
+    append(pills_qty);
     append(pills_price);
     append(pills_revenue);
     append("Préservatif Masc.");
+    append(male_condoms_qty);
     append(male_condoms_price);
     append(male_condoms_revenue);
     append("Préservatif Femi.");
+    append(female_condoms_qty);
     append(female_condoms_price);
     append(female_condoms_revenue);
     append("Tests VIH");
+    append(hiv_tests_qty);
     append(hiv_tests_price);
     append(hiv_tests_revenue);
     append("Retraits DIU");
+    append(iud_removal_qty);
     append(iud_removal_price);
     append(iud_removal_revenue);
     append("Retraits Implants");
+    append(implant_removal_qty);
     append(implant_removal_price);
     append(implant_removal_revenue);
 
@@ -155,22 +191,31 @@ public FinancialForm(MSIMIDlet midlet) {
      */
     public boolean isComplete() {
         // all fields are required to be filled.
-        if (intrauterine_devices_price.getString().length() == 0 ||
+        if (intrauterine_devices_qty.getString().length() == 0 ||
+            intrauterine_devices_price.getString().length() == 0 ||
             intrauterine_devices_revenue.getString().length() == 0 ||
+            implants_qty.getString().length() == 0 ||
             implants_price.getString().length() == 0 ||
             implants_revenue.getString().length() == 0 ||
+            injections_qty.getString().length() == 0 ||
             injections_price.getString().length() == 0 ||
             injections_revenue.getString().length() == 0 ||
+            pills_qty.getString().length() == 0 ||
             pills_price.getString().length() == 0 ||
             pills_revenue.getString().length() == 0 ||
+            male_condoms_qty.getString().length() == 0 ||
             male_condoms_price.getString().length() == 0 ||
             male_condoms_revenue.getString().length() == 0 ||
+            female_condoms_qty.getString().length() == 0 ||
             female_condoms_price.getString().length() == 0 ||
             female_condoms_revenue.getString().length() == 0 ||
+            hiv_tests_qty.getString().length() == 0 ||
             hiv_tests_price.getString().length() == 0 ||
             hiv_tests_revenue.getString().length() == 0 ||
+            iud_removal_qty.getString().length() == 0 ||
             iud_removal_price.getString().length() == 0 ||
             iud_removal_revenue.getString().length() == 0 ||
+            implant_removal_qty.getString().length() == 0 ||
             implant_removal_price.getString().length() == 0 ||
             implant_removal_revenue.getString().length() == 0) {
             return false;
@@ -206,22 +251,31 @@ public FinancialForm(MSIMIDlet midlet) {
 
             // create a report object from values
             FinancialReport financial = new FinancialReport();
-            financial.setAll(Integer.parseInt(intrauterine_devices_price.getString()),
+            financial.setAll(Integer.parseInt(intrauterine_devices_qty.getString()),
+                             Integer.parseInt(intrauterine_devices_price.getString()),
                              Integer.parseInt(intrauterine_devices_revenue.getString()),
+                             Integer.parseInt(implants_qty.getString()),
                              Integer.parseInt(implants_price.getString()),
                              Integer.parseInt(implants_revenue.getString()),
+                             Integer.parseInt(injections_qty.getString()),
                              Integer.parseInt(injections_price.getString()),
                              Integer.parseInt(injections_revenue.getString()),
+                             Integer.parseInt(pills_qty.getString()),
                              Integer.parseInt(pills_price.getString()),
                              Integer.parseInt(pills_revenue.getString()),
+                             Integer.parseInt(male_condoms_qty.getString()),
                              Integer.parseInt(male_condoms_price.getString()),
                              Integer.parseInt(male_condoms_revenue.getString()),
+                             Integer.parseInt(female_condoms_qty.getString()),
                              Integer.parseInt(female_condoms_price.getString()),
                              Integer.parseInt(female_condoms_revenue.getString()),
+                             Integer.parseInt(hiv_tests_qty.getString()),
                              Integer.parseInt(hiv_tests_price.getString()),
                              Integer.parseInt(hiv_tests_revenue.getString()),
+                             Integer.parseInt(iud_removal_qty.getString()),
                              Integer.parseInt(iud_removal_price.getString()),
                              Integer.parseInt(iud_removal_revenue.getString()),
+                             Integer.parseInt(implant_removal_qty.getString()),
                              Integer.parseInt(implant_removal_price.getString()),
                              Integer.parseInt(implant_removal_revenue.getString()));
             // check for errors and display first error
@@ -241,7 +295,7 @@ public FinancialForm(MSIMIDlet midlet) {
             config.set("has_data", "true");
 
             // Confirm data is OK and go to main menu
-            alert = new Alert("Enregistré", "Les données des services prestés ont été enregistrées", null, AlertType.CONFIRMATION);
+            alert = new Alert("Enregistré", "Les données du rapport financier ont été enregistrées", null, AlertType.CONFIRMATION);
             alert.setTimeout(Alert.FOREVER);
             this.midlet.display.setCurrent (alert, this.midlet.mainMenu);
         }

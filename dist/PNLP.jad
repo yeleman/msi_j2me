@@ -1,7 +1,7 @@
 MIDlet-1: MSIMIDlet,/pnlp-32-32.png,msisr.MSIMIDlet
 MIDlet-Description: Transmission des informations de routine sur le Paludisme au Mali
 MIDlet-Icon: pnlp-32-32.png
-MIDlet-Jar-Size: 43548
+MIDlet-Jar-Size: 45146
 MIDlet-Jar-URL: PNLP.jar
 MIDlet-Name: MSI
 MIDlet-Vendor: YELEMAN S.A.R.L

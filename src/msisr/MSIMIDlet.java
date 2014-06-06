@@ -133,7 +133,7 @@ public class MSIMIDlet extends MIDlet implements CommandListener {
                         break;
 
                     // send form
-                    case 5:
+                    case 3:
                         // check validity and exit if it fails
                         MSIReport report = new MSIReport();
                         if (!(report.dataIsValid(true))) {

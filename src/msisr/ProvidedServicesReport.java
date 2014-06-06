@@ -19,18 +19,26 @@ public class ProvidedServicesReport implements ReportPartInterface {
     private RecordStore recordstore = null;
     private Vector _errors = new Vector();
 
-    public int total_consultation = -1;
-    public int total_malaria_cases = -1;
-    public int total_simple_malaria_cases = -1;
-    public int total_severe_malaria_cases = -1;
-    public int total_tested_malaria_cases = -1;
-    public int total_confirmed_malaria_cases = -1;
-    public int total_acttreated_malaria_cases = -1;
-    public int total_inpatient = -1;
-    public int total_malaria_inpatient = -1;
-    public int total_death = -1;
-    public int total_malaria_death = -1;
-    public int total_distributed_bednets = -1;
+    public int tubal_ligations = -1;
+    public int intrauterine_devices = -1;
+    public int injections = -1;
+    public int pills = -1;
+    public int male_condoms = -1;
+    public int female_condoms = -1;
+    public int emergency_controls = -1;
+    public int implants = -1;
+    public int new_clients = -1;
+    public int previous_clients = -1;
+    public int under25_visits = -1;
+    public int over25_visits = -1;
+    public int very_first_visits = -1;
+    public int short_term_method_visits = -1;
+    public int long_term_method_visits = -1;
+    public int hiv_counseling_clients = -1;
+    public int hiv_tests = -1;
+    public int hiv_positive_results = -1;
+    public int implant_removals = -1;
+    public int iud_removal = -1;
 
     public ProvidedServicesReport() {
         try {
@@ -76,18 +84,26 @@ public class ProvidedServicesReport implements ReportPartInterface {
         // actually retrieve data
         recordstore.getRecord(1, byteInputData, 0);
 
-        total_consultation = inputDataStream.readInt();
-        total_malaria_cases = inputDataStream.readInt();
-        total_simple_malaria_cases = inputDataStream.readInt();
-        total_severe_malaria_cases = inputDataStream.readInt();
-        total_tested_malaria_cases = inputDataStream.readInt();
-        total_confirmed_malaria_cases = inputDataStream.readInt();
-        total_acttreated_malaria_cases = inputDataStream.readInt();
-        total_inpatient = inputDataStream.readInt();
-        total_malaria_inpatient = inputDataStream.readInt();
-        total_death = inputDataStream.readInt();
-        total_malaria_death = inputDataStream.readInt();
-        total_distributed_bednets = inputDataStream.readInt();
+        tubal_ligations = inputDataStream.readInt();
+        intrauterine_devices = inputDataStream.readInt();
+        injections = inputDataStream.readInt();
+        pills = inputDataStream.readInt();
+        male_condoms = inputDataStream.readInt();
+        female_condoms = inputDataStream.readInt();
+        emergency_controls = inputDataStream.readInt();
+        implants = inputDataStream.readInt();
+        new_clients = inputDataStream.readInt();
+        previous_clients = inputDataStream.readInt();
+        under25_visits = inputDataStream.readInt();
+        over25_visits = inputDataStream.readInt();
+        very_first_visits = inputDataStream.readInt();
+        short_term_method_visits = inputDataStream.readInt();
+        long_term_method_visits = inputDataStream.readInt();
+        hiv_counseling_clients = inputDataStream.readInt();
+        hiv_tests = inputDataStream.readInt();
+        hiv_positive_results = inputDataStream.readInt();
+        implant_removals = inputDataStream.readInt();
+        iud_removal = inputDataStream.readInt();
 
         // close stream
         inputStream.reset();
@@ -125,18 +141,26 @@ public class ProvidedServicesReport implements ReportPartInterface {
         DataOutputStream outputDataStream = new DataOutputStream(outputStream);
 
         // add all fields to the stream
-        outputDataStream.writeInt(total_consultation);
-        outputDataStream.writeInt(total_malaria_cases);
-        outputDataStream.writeInt(total_simple_malaria_cases);
-        outputDataStream.writeInt(total_severe_malaria_cases);
-        outputDataStream.writeInt(total_tested_malaria_cases);
-        outputDataStream.writeInt(total_confirmed_malaria_cases);
-        outputDataStream.writeInt(total_acttreated_malaria_cases);
-        outputDataStream.writeInt(total_inpatient);
-        outputDataStream.writeInt(total_malaria_inpatient);
-        outputDataStream.writeInt(total_death);
-        outputDataStream.writeInt(total_malaria_death);
-        outputDataStream.writeInt(total_distributed_bednets);
+        outputDataStream.writeInt(tubal_ligations);
+        outputDataStream.writeInt(intrauterine_devices);
+        outputDataStream.writeInt(injections);
+        outputDataStream.writeInt(pills);
+        outputDataStream.writeInt(male_condoms);
+        outputDataStream.writeInt(female_condoms);
+        outputDataStream.writeInt(emergency_controls);
+        outputDataStream.writeInt(implants);
+        outputDataStream.writeInt(new_clients);
+        outputDataStream.writeInt(previous_clients);
+        outputDataStream.writeInt(under25_visits);
+        outputDataStream.writeInt(over25_visits);
+        outputDataStream.writeInt(very_first_visits);
+        outputDataStream.writeInt(short_term_method_visits);
+        outputDataStream.writeInt(long_term_method_visits);
+        outputDataStream.writeInt(hiv_counseling_clients);
+        outputDataStream.writeInt(hiv_tests);
+        outputDataStream.writeInt(hiv_positive_results);
+        outputDataStream.writeInt(implant_removals);
+        outputDataStream.writeInt(iud_removal);
 
         // finish preparing stream
         outputDataStream.flush();
@@ -180,13 +204,26 @@ public class ProvidedServicesReport implements ReportPartInterface {
      */
     public String toSMSFormat() {
         String sep = " ";
-        return total_consultation + sep + total_malaria_cases + sep +
-               total_simple_malaria_cases + sep + total_severe_malaria_cases +
-               sep + total_tested_malaria_cases + sep +
-               total_confirmed_malaria_cases + sep +
-               total_acttreated_malaria_cases + sep + total_inpatient + sep +
-               total_malaria_inpatient + sep + total_death + sep +
-               total_malaria_death + sep + total_distributed_bednets;
+        return tubal_ligations + sep +
+                intrauterine_devices + sep +
+                injections + sep +
+                pills + sep +
+                male_condoms + sep +
+                female_condoms + sep +
+                emergency_controls + sep +
+                implants + sep +
+                new_clients + sep +
+                previous_clients + sep +
+                under25_visits + sep +
+                over25_visits + sep +
+                very_first_visits + sep +
+                short_term_method_visits + sep +
+                long_term_method_visits + sep +
+                hiv_counseling_clients + sep +
+                hiv_tests + sep +
+                hiv_positive_results + sep +
+                implant_removals + sep +
+                iud_removal;
     }
 
     /*
@@ -204,61 +241,9 @@ public class ProvidedServicesReport implements ReportPartInterface {
         }
 
         // various tests checking whether provided number are legit.
-        if (total_malaria_cases > total_consultation) {
-            _errors.addElement("Cas de Palu supérieur au total toutes causes");
-        }
-
-        if (total_simple_malaria_cases > total_consultation) {
-            _errors.addElement("Cas de Palu simple supérieur au total toutes causes");
-        }
-
-        if (total_severe_malaria_cases > total_consultation) {
-            _errors.addElement("Cas de Palu grave supérieur au total toutes causes");
-        }
-
-        if (total_simple_malaria_cases > total_malaria_cases) {
-            _errors.addElement("Cas de Palu simple supérieur au total suspectés");
-        }
-
-        if (total_severe_malaria_cases > total_malaria_cases) {
-            _errors.addElement("Cas de Palu grave supérieur au total suspectés");
-        }
-
-        if (total_tested_malaria_cases > total_malaria_cases) {
-            _errors.addElement("Cas de Palu testés supérieur au total suspectés");
-        }
-
-        if (total_confirmed_malaria_cases > total_malaria_cases) {
-            _errors.addElement("Cas de Palu confirmés supérieur au total suspectés");
-        }
-
-        if ((total_simple_malaria_cases + total_severe_malaria_cases) > total_malaria_cases) {
-            _errors.addElement("Cas de Palu simple + grave supérieurs au total suspectés");
-        }
-
-        if (total_confirmed_malaria_cases > total_tested_malaria_cases) {
-            _errors.addElement("Cas de Palu confirmés supérieur au total testés");
-        }
-
-        if ((total_simple_malaria_cases + total_severe_malaria_cases) > total_confirmed_malaria_cases) {
-            _errors.addElement("Cas de Palu simple + grave supérieurs au total confirmés");
-        }
-
-        if (total_acttreated_malaria_cases > total_tested_malaria_cases) {
-            _errors.addElement("Cas de Palu traités supérieur au total testés");
-        }
-
-        if (total_acttreated_malaria_cases > total_confirmed_malaria_cases) {
-            _errors.addElement("Cas de Palu traités supérieur au total confirmés");
-        }
-
-        if (total_malaria_inpatient > total_inpatient) {
-            _errors.addElement("Hospitalisations Palu supérieur aux hospit. toutes causes");
-        }
-
-        if (total_malaria_death > total_death) {
-            _errors.addElement("Décès Palu supérieur aux décès toutes causes");
-        }
+       // if (total_malaria_cases > total_consultation) {
+       //     _errors.addElement("Cas de Palu supérieur au total toutes causes");
+       // }
 
         if (_errors.size() == 0) {
             return true;
@@ -293,58 +278,91 @@ public class ProvidedServicesReport implements ReportPartInterface {
 
     /*
      * set all variables at once.
-     * @param total_consultation number of consultations all causes
-     * @param total_malaria_cases number of suspected malaria cases
-     * @param total_simple_malaria_cases number of simple malaria cases
-     * @praram total_severe_malaria_cases number of severe malaria cases
-     * @param total_tested_malaria_cases number of tested malaria cases
-     * @param total_confirmed_malaria_cases number of confirmed malaria cases
-     * @param total_acttreated_malaria_cases number of ACT treated malaria cases
-     * @param total_inpatient number of inpatient all causes
-     * @param total_malaria_impatient number of Malaria related inpatient
-     * @param total_death number of death all causes
-     * @param total_malaria_death number of Malaria related death
-     * @param total_distributed_bednets number of bednets distributed
+     * @param tubal_ligations
+     * @param intrauterine_devices
+     * @param injections
+     * @param pills
+     * @param male_condoms
+     * @param female_condoms
+     * @param emergency_controls
+     * @param implants
+     * @param new_clients
+     * @param previous_clients
+     * @param under25_visits
+     * @param over25_visits
+     * @param very_first_visits
+     * @param short_term_method_visits
+     * @param long_term_method_visits
+     * @param hiv_counseling_clients
+     * @param hiv_tests
+     * @param hiv_positive_results
+     * @param implant_removals
+     * @param iud_removal
      */
-    public void setAll(int total_consultation,
-                  int total_malaria_cases,
-                  int total_simple_malaria_cases,
-                  int total_severe_malaria_cases,
-                  int total_tested_malaria_cases,
-                  int total_confirmed_malaria_cases,
-                  int total_acttreated_malaria_cases,
-                  int total_inpatient,
-                  int total_malaria_impatient,
-                  int total_death,
-                  int total_malaria_death,
-                  int total_distributed_bednets) {
-        this.total_consultation = total_consultation;
-        this.total_malaria_cases = total_malaria_cases;
-        this.total_simple_malaria_cases = total_simple_malaria_cases;
-        this.total_severe_malaria_cases = total_severe_malaria_cases;
-        this.total_tested_malaria_cases = total_tested_malaria_cases;
-        this.total_confirmed_malaria_cases = total_confirmed_malaria_cases;
-        this.total_acttreated_malaria_cases = total_acttreated_malaria_cases;
-        this.total_inpatient = total_inpatient;
-        this.total_malaria_inpatient = total_malaria_impatient;
-        this.total_death = total_death;
-        this.total_malaria_death = total_malaria_death;
-        this.total_distributed_bednets = total_distributed_bednets;
+    public void setAll(int tubal_ligations,
+                       int intrauterine_devices,
+                       int injections,
+                       int pills,
+                       int male_condoms,
+                       int female_condoms,
+                       int emergency_controls,
+                       int implants,
+                       int new_clients,
+                       int previous_clients,
+                       int under25_visits,
+                       int over25_visits,
+                       int very_first_visits,
+                       int short_term_method_visits,
+                       int long_term_method_visits,
+                       int hiv_counseling_clients,
+                       int hiv_tests,
+                       int hiv_positive_results,
+                       int implant_removals,
+                       int iud_removal) {
+
+    this.tubal_ligations = tubal_ligations;
+    this.intrauterine_devices = intrauterine_devices;
+    this.injections = injections;
+    this.pills = pills;
+    this.male_condoms = male_condoms;
+    this.female_condoms = female_condoms;
+    this.emergency_controls = emergency_controls;
+    this.implants = implants;
+    this.new_clients = new_clients;
+    this.previous_clients = previous_clients;
+    this.under25_visits = under25_visits;
+    this.over25_visits = over25_visits;
+    this.very_first_visits = very_first_visits;
+    this.short_term_method_visits = short_term_method_visits;
+    this.long_term_method_visits = long_term_method_visits;
+    this.hiv_counseling_clients = hiv_counseling_clients;
+    this.hiv_tests = hiv_tests;
+    this.hiv_positive_results = hiv_positive_results;
+    this.implant_removals = implant_removals;
+    this.iud_removal = iud_removal;
     }
 
     public boolean dataIsComplete() {
-        if (this.total_consultation != -1 &&
-            this.total_malaria_cases != -1 &&
-            this.total_simple_malaria_cases != -1 &&
-            this.total_severe_malaria_cases != -1 &&
-            this.total_tested_malaria_cases != -1 &&
-            this.total_confirmed_malaria_cases != -1 &&
-            this.total_acttreated_malaria_cases != -1 &&
-            this.total_inpatient != -1 &&
-            this.total_malaria_inpatient != -1 &&
-            this.total_death != -1 &&
-            this.total_malaria_death != -1 &&
-            this.total_distributed_bednets != -1) {
+        if (this.tubal_ligations != -1 &&
+            this.intrauterine_devices != -1 &&
+            this.injections != -1 &&
+            this.pills != -1 &&
+            this.male_condoms != -1 &&
+            this.female_condoms != -1 &&
+            this.emergency_controls != -1 &&
+            this.implants != -1 &&
+            this.new_clients != -1 &&
+            this.previous_clients != -1 &&
+            this.under25_visits != -1 &&
+            this.over25_visits != -1 &&
+            this.very_first_visits != -1 &&
+            this.short_term_method_visits != -1 &&
+            this.long_term_method_visits != -1 &&
+            this.hiv_counseling_clients != -1 &&
+            this.hiv_tests != -1 &&
+            this.hiv_positive_results != -1 &&
+            this.implant_removals != -1 &&
+            this.iud_removal != -1) {
                 return true;
         }
         return false;

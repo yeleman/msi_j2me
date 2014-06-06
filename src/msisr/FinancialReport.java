@@ -19,22 +19,31 @@ public class FinancialReport implements ReportPartInterface {
     private RecordStore recordstore = null;
     private Vector _errors = new Vector();
 
+    public int intrauterine_devices_qty = -1;
     public int intrauterine_devices_price = -1;
     public int intrauterine_devices_revenue = -1;
+    public int implants_qty = -1;
     public int implants_price = -1;
     public int implants_revenue = -1;
+    public int injections_qty = -1;
     public int injections_price = -1;
     public int injections_revenue = -1;
+    public int pills_qty = -1;
     public int pills_price = -1;
     public int pills_revenue = -1;
+    public int male_condoms_qty = -1;
     public int male_condoms_price = -1;
     public int male_condoms_revenue = -1;
+    public int female_condoms_qty = -1;
     public int female_condoms_price = -1;
     public int female_condoms_revenue = -1;
+    public int hiv_tests_qty = -1;
     public int hiv_tests_price = -1;
     public int hiv_tests_revenue = -1;
+    public int iud_removal_qty = -1;
     public int iud_removal_price = -1;
     public int iud_removal_revenue = -1;
+    public int implant_removal_qty = -1;
     public int implant_removal_price = -1;
     public int implant_removal_revenue = -1;
 
@@ -82,22 +91,31 @@ public class FinancialReport implements ReportPartInterface {
         // actually retrieve data
         recordstore.getRecord(1, byteInputData, 0);
 
+        intrauterine_devices_qty = inputDataStream.readInt();
         intrauterine_devices_price = inputDataStream.readInt();
         intrauterine_devices_revenue = inputDataStream.readInt();
+        implants_qty = inputDataStream.readInt();
         implants_price = inputDataStream.readInt();
         implants_revenue = inputDataStream.readInt();
+        injections_qty = inputDataStream.readInt();
         injections_price = inputDataStream.readInt();
         injections_revenue = inputDataStream.readInt();
+        pills_qty = inputDataStream.readInt();
         pills_price = inputDataStream.readInt();
         pills_revenue = inputDataStream.readInt();
+        male_condoms_qty = inputDataStream.readInt();
         male_condoms_price = inputDataStream.readInt();
         male_condoms_revenue = inputDataStream.readInt();
+        female_condoms_qty = inputDataStream.readInt();
         female_condoms_price = inputDataStream.readInt();
         female_condoms_revenue = inputDataStream.readInt();
+        hiv_tests_qty = inputDataStream.readInt();
         hiv_tests_price = inputDataStream.readInt();
         hiv_tests_revenue = inputDataStream.readInt();
+        iud_removal_qty = inputDataStream.readInt();
         iud_removal_price = inputDataStream.readInt();
         iud_removal_revenue = inputDataStream.readInt();
+        implant_removal_qty = inputDataStream.readInt();
         implant_removal_price = inputDataStream.readInt();
         implant_removal_revenue = inputDataStream.readInt();
 
@@ -137,22 +155,31 @@ public class FinancialReport implements ReportPartInterface {
         DataOutputStream outputDataStream = new DataOutputStream(outputStream);
 
         // add all fields to the stream
+        outputDataStream.writeInt(intrauterine_devices_qty);
         outputDataStream.writeInt(intrauterine_devices_price);
         outputDataStream.writeInt(intrauterine_devices_revenue);
+        outputDataStream.writeInt(implants_qty);
         outputDataStream.writeInt(implants_price);
         outputDataStream.writeInt(implants_revenue);
+        outputDataStream.writeInt(injections_qty);
         outputDataStream.writeInt(injections_price);
         outputDataStream.writeInt(injections_revenue);
+        outputDataStream.writeInt(pills_qty);
         outputDataStream.writeInt(pills_price);
         outputDataStream.writeInt(pills_revenue);
+        outputDataStream.writeInt(male_condoms_qty);
         outputDataStream.writeInt(male_condoms_price);
         outputDataStream.writeInt(male_condoms_revenue);
+        outputDataStream.writeInt(female_condoms_qty);
         outputDataStream.writeInt(female_condoms_price);
         outputDataStream.writeInt(female_condoms_revenue);
+        outputDataStream.writeInt(hiv_tests_qty);
         outputDataStream.writeInt(hiv_tests_price);
         outputDataStream.writeInt(hiv_tests_revenue);
+        outputDataStream.writeInt(iud_removal_qty);
         outputDataStream.writeInt(iud_removal_price);
         outputDataStream.writeInt(iud_removal_revenue);
+        outputDataStream.writeInt(implant_removal_qty);
         outputDataStream.writeInt(implant_removal_price);
         outputDataStream.writeInt(implant_removal_revenue);
 
@@ -198,22 +225,31 @@ public class FinancialReport implements ReportPartInterface {
      */
     public String toSMSFormat() {
         String sep = " ";
-        return intrauterine_devices_price + sep +
+        return intrauterine_devices_qty + sep +
+               intrauterine_devices_price + sep +
                intrauterine_devices_revenue + sep +
+               implants_qty + sep +
                implants_price + sep +
                implants_revenue + sep +
+               injections_qty + sep +
                injections_price + sep +
                injections_revenue + sep +
+               pills_qty + sep +
                pills_price + sep +
                pills_revenue + sep +
+               male_condoms_qty + sep +
                male_condoms_price + sep +
                male_condoms_revenue + sep +
+               female_condoms_qty + sep +
                female_condoms_price + sep +
                female_condoms_revenue + sep +
+               hiv_tests_qty + sep +
                hiv_tests_price + sep +
                hiv_tests_revenue + sep +
+               iud_removal_qty + sep +
                iud_removal_price + sep +
                iud_removal_revenue + sep +
+               implant_removal_qty + sep +
                implant_removal_price + sep +
                implant_removal_revenue;
     }
@@ -268,80 +304,125 @@ public class FinancialReport implements ReportPartInterface {
 
     /*
      * set all variables at once.
+     * @param intrauterine_devices_qty
      * @param intrauterine_devices_price
      * @param intrauterine_devices_revenue
+     * @param implants_qty
      * @param implants_price
      * @param implants_revenue
+     * @param injections_qty
      * @param injections_price
      * @param injections_revenue
+     * @param pills_qty
      * @param pills_price
      * @param pills_revenue
+     * @param male_condoms_qty
      * @param male_condoms_price
      * @param male_condoms_revenue
+     * @param female_condoms_qty
      * @param female_condoms_price
      * @param female_condoms_revenue
+     * @param hiv_tests_qty
      * @param hiv_tests_price
      * @param hiv_tests_revenue
+     * @param iud_removal_qty
      * @param iud_removal_price
      * @param iud_removal_revenue
+     * @param implant_removal_qty
      * @param implant_removal_price
      * @param implant_removal_revenue
      */
-    public void setAll(int intrauterine_devices_price,
+    public void setAll(int intrauterine_devices_qty,
+                       int intrauterine_devices_price,
                        int intrauterine_devices_revenue,
+                       int implants_qty,
                        int implants_price,
                        int implants_revenue,
+                       int injections_qty,
                        int injections_price,
                        int injections_revenue,
+                       int pills_qty,
                        int pills_price,
                        int pills_revenue,
+                       int male_condoms_qty,
                        int male_condoms_price,
                        int male_condoms_revenue,
+                       int female_condoms_qty,
                        int female_condoms_price,
                        int female_condoms_revenue,
+                       int hiv_tests_qty,
                        int hiv_tests_price,
                        int hiv_tests_revenue,
+                       int iud_removal_qty,
                        int iud_removal_price,
                        int iud_removal_revenue,
+                       int implant_removal_qty,
                        int implant_removal_price,
                        int implant_removal_revenue) {
         this.intrauterine_devices_price = intrauterine_devices_price;
+        this.intrauterine_devices_qty = intrauterine_devices_qty;
+        this.intrauterine_devices_price = intrauterine_devices_price;
         this.intrauterine_devices_revenue = intrauterine_devices_revenue;
+        this.implants_price = implants_price;
+        this.implants_qty = implants_qty;
         this.implants_price = implants_price;
         this.implants_revenue = implants_revenue;
         this.injections_price = injections_price;
+        this.injections_qty = injections_qty;
+        this.injections_price = injections_price;
         this.injections_revenue = injections_revenue;
+        this.pills_price = pills_price;
+        this.pills_qty = pills_qty;
         this.pills_price = pills_price;
         this.pills_revenue = pills_revenue;
         this.male_condoms_price = male_condoms_price;
+        this.male_condoms_qty = male_condoms_qty;
+        this.male_condoms_price = male_condoms_price;
         this.male_condoms_revenue = male_condoms_revenue;
+        this.female_condoms_price = female_condoms_price;
+        this.female_condoms_qty = female_condoms_qty;
         this.female_condoms_price = female_condoms_price;
         this.female_condoms_revenue = female_condoms_revenue;
         this.hiv_tests_price = hiv_tests_price;
+        this.hiv_tests_qty = hiv_tests_qty;
+        this.hiv_tests_price = hiv_tests_price;
         this.hiv_tests_revenue = hiv_tests_revenue;
         this.iud_removal_price = iud_removal_price;
+        this.iud_removal_qty = iud_removal_qty;
+        this.iud_removal_price = iud_removal_price;
         this.iud_removal_revenue = iud_removal_revenue;
+        this.implant_removal_price = implant_removal_price;
+        this.implant_removal_qty = implant_removal_qty;
         this.implant_removal_price = implant_removal_price;
         this.implant_removal_revenue = implant_removal_revenue;
     }
 
     public boolean dataIsComplete() {
-        if (this.intrauterine_devices_price != -1 &&
+        if (this.intrauterine_devices_qty != -1 &&
+            this.intrauterine_devices_price != -1 &&
             this.intrauterine_devices_revenue != -1 &&
+            this.implants_qty != -1 &&
             this.implants_price != -1 &&
             this.implants_revenue != -1 &&
+            this.injections_qty != -1 &&
             this.injections_price != -1 &&
             this.injections_revenue != -1 &&
+            this.pills_qty != -1 &&
             this.pills_price != -1 &&
             this.pills_revenue != -1 &&
+            this.male_condoms_qty != -1 &&
             this.male_condoms_price != -1 &&
             this.male_condoms_revenue != -1 &&
+            this.female_condoms_qty != -1 &&
             this.female_condoms_price != -1 &&
             this.female_condoms_revenue != -1 &&
+            this.hiv_tests_qty != -1 &&
             this.hiv_tests_price != -1 &&
             this.hiv_tests_revenue != -1 &&
+            this.iud_removal_qty != -1 &&
             this.iud_removal_price != -1 &&
             this.iud_removal_revenue != -1 &&
+            this.implant_removal_qty != -1 &&
             this.implant_removal_price != -1 &&
             this.implant_removal_revenue != -1) {
                 return true;
