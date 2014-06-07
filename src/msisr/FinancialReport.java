@@ -269,7 +269,41 @@ public class FinancialReport implements ReportPartInterface {
         }
 
         // various tests checking whether provided number are legit.
-        // NONE !
+        if ((intrauterine_devices_qty * intrauterine_devices_price) < intrauterine_devices_revenue) {
+            _errors.addElement("DIU: montant inférieur aux revenus net.");
+        }
+
+        if ((implants_qty * implants_price) < implants_revenue) {
+            _errors.addElement("Implants: montant inférieur aux revenus net.");
+        }
+
+        if ((injections_qty * injections_price) < injections_revenue) {
+            _errors.addElement("Injectable: montant inférieur aux revenus net.");
+        }
+
+        if ((pills_qty * pills_price) < pills_revenue) {
+            _errors.addElement("Pillule: montant inférieur aux revenus net.");
+        }
+
+        if ((male_condoms_qty * male_condoms_price) < male_condoms_revenue) {
+            _errors.addElement("Préservatif masc.: montant inférieur aux revenus net.");
+        }
+
+        if ((female_condoms_qty * female_condoms_price) < female_condoms_revenue) {
+            _errors.addElement("Préservatif femin.: montant inférieur aux revenus net.");
+        }
+
+        if ((hiv_tests_qty * hiv_tests_price) < hiv_tests_revenue) {
+            _errors.addElement("Test VIH: montant inférieur aux revenus net.");
+        }
+
+        if ((iud_removal_qty * iud_removal_price) < iud_removal_revenue) {
+            _errors.addElement("Retrait DIU: montant inférieur aux revenus net.");
+        }
+
+        if ((implant_removal_qty * implant_removal_price) < implant_removal_revenue) {
+            _errors.addElement("Retrait Implant: montant inférieur aux revenus net.");
+        }
 
         if (_errors.size() == 0) {
             return true;

@@ -70,6 +70,72 @@ public class MSIReport {
             _errors.addElement("Les données de stocks sont incomplètes ou erronées");
         }
 
+        // IUD
+        if (provided_services.intrauterine_devices != financial.intrauterine_devices_qty) {
+            _errors.addElement("DIU: Quantité prestés ("+ provided_services.intrauterine_devices + ") différent de Quantité financière ("+ financial.intrauterine_devices_qty +").");
+        }
+        if (provided_services.intrauterine_devices != stocks.intrauterine_devices_used) {
+            _errors.addElement("DIU: Quantité prestés ("+ provided_services.intrauterine_devices + ") différent de Quantité stocks ("+ stocks.intrauterine_devices_used +").");
+        }
+
+        // Implant
+        if (provided_services.implants != financial.implants_qty) {
+            _errors.addElement("Implant: Quantité prestés ("+ provided_services.implants + ") différent de Quantité financière ("+ financial.implants_qty +").");
+        }
+        if (provided_services.implants != stocks.implants_used) {
+            _errors.addElement("Implant: Quantité prestés ("+ provided_services.implants + ") différent de Quantité stocks ("+ stocks.implants_used +").");
+        }
+
+        // Injections
+        if (provided_services.injections != financial.injections_qty) {
+            _errors.addElement("Injectable: Quantité prestés ("+ provided_services.injections + ") différent de Quantité financière ("+ financial.injections_qty +").");
+        }
+        if (provided_services.injections != stocks.injections_used) {
+            _errors.addElement("Injectable: Quantité prestés ("+ provided_services.injections + ") différent de Quantité stocks ("+ stocks.injections_used +").");
+        }
+
+        // Pills
+        if (provided_services.pills != financial.pills_qty) {
+            _errors.addElement("Pilule: Quantité prestés ("+ provided_services.pills + ") différent de Quantité financière ("+ financial.pills_qty +").");
+        }
+        if (provided_services.pills != stocks.pills_used) {
+            _errors.addElement("Pilule: Quantité prestés ("+ provided_services.pills + ") différent de Quantité stocks ("+ stocks.pills_used +").");
+        }
+
+        // Male condoms
+        if (provided_services.male_condoms != financial.male_condoms_qty) {
+            _errors.addElement("Préservatif masc.: Quantité prestés ("+ provided_services.male_condoms + ") différent de Quantité financière ("+ financial.male_condoms_qty +").");
+        }
+        if (provided_services.male_condoms != stocks.male_condoms_used) {
+            _errors.addElement("Préservatif masc.: Quantité prestés ("+ provided_services.male_condoms + ") différent de Quantité stocks ("+ stocks.male_condoms_used +").");
+        }
+
+        // Female condoms
+        if (provided_services.female_condoms != financial.female_condoms_qty) {
+            _errors.addElement("Préservatif femin.: Quantité prestés ("+ provided_services.female_condoms + ") différent de Quantité financière ("+ financial.female_condoms_qty +").");
+        }
+        if (provided_services.female_condoms != stocks.female_condoms_used) {
+            _errors.addElement("Préservatif femin.: Quantité prestés ("+ provided_services.female_condoms + ") différent de Quantité stocks ("+ stocks.female_condoms_used +").");
+        }
+
+        // HIV Tests
+        if (provided_services.hiv_tests != financial.hiv_tests_qty) {
+            _errors.addElement("Test VIH: Quantité prestés ("+ provided_services.hiv_tests + ") différent de Quantité financière ("+ financial.hiv_tests_qty +").");
+        }
+        if (provided_services.hiv_tests != stocks.hiv_tests_used) {
+            _errors.addElement("Test VIH: Quantité prestés ("+ provided_services.hiv_tests + ") différent de Quantité stocks ("+ stocks.hiv_tests_used +").");
+        }
+
+        // IUD Removal
+        if (provided_services.iud_removal != financial.iud_removal_qty) {
+            _errors.addElement("Retrait DIU: Quantité prestés ("+ provided_services.iud_removal + ") différent de Quantité financière ("+ financial.iud_removal_qty +").");
+        }
+
+        // Implant Removal
+        if (provided_services.implant_removals != financial.implant_removal_qty) {
+            _errors.addElement("Retrait Implant: Quantité prestés ("+ provided_services.implant_removals + ") différent de Quantité financière ("+ financial.implant_removal_qty +").");
+        }
+
         if (!only_reports) {
 
             // verify that meta data is present

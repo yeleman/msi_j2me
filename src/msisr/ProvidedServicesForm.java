@@ -53,28 +53,28 @@ public ProvidedServicesForm(MSIMIDlet midlet) {
     config = new Configuration();
 
     // CAP-providing services
-    tubal_ligations = new TextField("Ligature des trompes (LMS)", null, MAX_SIZE, TextField.DECIMAL);
-    intrauterine_devices = new TextField("Diapositif Intra-utérin (DIU)", null, MAX_SIZE, TextField.DECIMAL);
-    injections = new TextField("Injectables", null, MAX_SIZE, TextField.DECIMAL);
-    pills = new TextField("Plaquettes Pilules (payant)", null, MAX_SIZE, TextField.DECIMAL);
-    male_condoms = new TextField("Masculins (payant)", null, MAX_SIZE, TextField.DECIMAL);
-    female_condoms = new TextField("Féminins (payant)", null, MAX_SIZE, TextField.DECIMAL);
-    emergency_controls = new TextField("Contraception d'urgence (payant)", null, MAX_SIZE, TextField.DECIMAL);
-    implants = new TextField("Implant 5 ans", null, MAX_SIZE, TextField.DECIMAL);
+    tubal_ligations = new TextField("Ligature des trompes (LMS)", null, MAX_SIZE, TextField.NUMERIC);
+    intrauterine_devices = new TextField("Diapositif Intra-utérin (DIU)", null, MAX_SIZE, TextField.NUMERIC);
+    injections = new TextField("Injectables", null, MAX_SIZE, TextField.NUMERIC);
+    pills = new TextField("Plaquettes Pilules (payant)", null, MAX_SIZE, TextField.NUMERIC);
+    male_condoms = new TextField("Masculins (payant)", null, MAX_SIZE, TextField.NUMERIC);
+    female_condoms = new TextField("Féminins (payant)", null, MAX_SIZE, TextField.NUMERIC);
+    emergency_controls = new TextField("Contraception d'urgence (payant)", null, MAX_SIZE, TextField.NUMERIC);
+    implants = new TextField("Implant 5 ans", null, MAX_SIZE, TextField.NUMERIC);
     // Clients related services
-    new_clients = new TextField("Nouveaux clients", null, MAX_SIZE, TextField.DECIMAL);
-    previous_clients = new TextField("Anciens clients", null, MAX_SIZE, TextField.DECIMAL);
-    under25_visits = new TextField("âgés de 24 ans ou moins", null, MAX_SIZE, TextField.DECIMAL);
-    over25_visits = new TextField("de 25 ans ou plus", null, MAX_SIZE, TextField.DECIMAL);
-    very_first_visits = new TextField("Utilisant une méthode de PF pour la première fois", null, MAX_SIZE, TextField.DECIMAL);
-    short_term_method_visits = new TextField("Méthode de PF à court terme", null, MAX_SIZE, TextField.DECIMAL);
-    long_term_method_visits = new TextField("Méthode de PF méthode de longue durée", null, MAX_SIZE, TextField.DECIMAL);
-    hiv_counseling_clients = new TextField("Bénéficié du Counseling VIH", null, MAX_SIZE, TextField.DECIMAL);
-    hiv_tests = new TextField("test VIH", null, MAX_SIZE, TextField.DECIMAL);
-    hiv_positive_results = new TextField("Dépistés séropositifs", null, MAX_SIZE, TextField.DECIMAL);
+    new_clients = new TextField("Nouveaux clients", null, MAX_SIZE, TextField.NUMERIC);
+    previous_clients = new TextField("Anciens clients", null, MAX_SIZE, TextField.NUMERIC);
+    under25_visits = new TextField("âgés de 24 ans ou moins", null, MAX_SIZE, TextField.NUMERIC);
+    over25_visits = new TextField("de 25 ans ou plus", null, MAX_SIZE, TextField.NUMERIC);
+    very_first_visits = new TextField("Utilisant une méthode de PF pour la première fois", null, MAX_SIZE, TextField.NUMERIC);
+    short_term_method_visits = new TextField("Méthode de PF à court terme", null, MAX_SIZE, TextField.NUMERIC);
+    long_term_method_visits = new TextField("Méthode de PF méthode de longue durée", null, MAX_SIZE, TextField.NUMERIC);
+    hiv_counseling_clients = new TextField("Bénéficié du Counseling VIH", null, MAX_SIZE, TextField.NUMERIC);
+    hiv_tests = new TextField("test VIH", null, MAX_SIZE, TextField.NUMERIC);
+    hiv_positive_results = new TextField("Dépistés séropositifs", null, MAX_SIZE, TextField.NUMERIC);
     // non-CAP providing services
-    implant_removals = new TextField("Retrait d'implants", null, MAX_SIZE, TextField.DECIMAL);
-    iud_removal = new TextField("Retrait de DIU", null, MAX_SIZE, TextField.DECIMAL);
+    implant_removals = new TextField("Retrait d'implants", null, MAX_SIZE, TextField.NUMERIC);
+    iud_removal = new TextField("Retrait de DIU", null, MAX_SIZE, TextField.NUMERIC);
 
     // if user requested to continue an existing report
     if (config.get("has_data").equalsIgnoreCase("true")) {

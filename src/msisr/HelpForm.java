@@ -48,17 +48,22 @@ private void getContentFromSection(String section) {
                "Dès qu'une section est complète et sans erreur, son nom contient [OK].\n\n" +
                "En cas de problème, contactez ANTIM.";
     } else if (section.equalsIgnoreCase("provided_services")) {
-        text = "Renseignez uniquement la zone correspondant aux enfants de moins de 5ans.\n" +
-               "Elle correspond à la première colonne du formulaire papier.\n\n" +
+        text = "Renseignez uniquement les données du rapport des Services Prestés.\n" +
+               "Indiquez uniquement les quantités et non les CAP.\n\n" +
                "En cas de problème, contactez votre District de référence.";
     } else if (section.equalsIgnoreCase("financial")) {
-        text = "Renseignez uniquement la zone correspondant aux enfants de 5ans et plus.\n" +
-               "Elle correspond à la deuxième colonne du formulaire papier.\n\n" +
+        text = "Renseignez uniquement les données du rapport financier.\n" +
+               "Les données doivent correspondre au rapport des services prestés.\n" +
+               "Le montant (prix unitaire * quantité) sera calculé automatiquement.\n\n" +
                "En cas de problème, contactez votre District de référence.";
     } else if (section.equalsIgnoreCase("stocks")) {
-        text = "Renseignez uniquement la zone correspondant aux femmes enceintes.\n" +
-               "Elle correspond à la troisieme colonne du formulaire papier " +
-               "ainsi qu'au bloc CPN/SP en fin de formulaire.\n\n" +
+        text = "Renseignez uniquement les données du rapport de stock.\n" +
+               "La quantité utilisé correspond aux données du rapport des services " +
+               "prestés.\n" +
+               "La quantité perdue correspond aux éléments qui n'ont pu être prestés.\n" +
+               "La quantité reçue est celle reçue entre l'inventaire " +
+               "(quantité initiale) et la fin du mois.\n" +
+               "La quantité restante est calculée automatiquement.\n\n" +
                "En cas de problème, contactez votre District de référence.";
     } else if (section.equalsIgnoreCase("edit_number")) {
         text = "Changez le numéro du serveur uniquement sur demande expresse " +

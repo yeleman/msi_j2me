@@ -205,25 +205,25 @@ public class ProvidedServicesReport implements ReportPartInterface {
     public String toSMSFormat() {
         String sep = " ";
         return tubal_ligations + sep +
-                intrauterine_devices + sep +
-                injections + sep +
-                pills + sep +
-                male_condoms + sep +
-                female_condoms + sep +
-                emergency_controls + sep +
-                implants + sep +
-                new_clients + sep +
-                previous_clients + sep +
-                under25_visits + sep +
-                over25_visits + sep +
-                very_first_visits + sep +
-                short_term_method_visits + sep +
-                long_term_method_visits + sep +
-                hiv_counseling_clients + sep +
-                hiv_tests + sep +
-                hiv_positive_results + sep +
-                implant_removals + sep +
-                iud_removal;
+               intrauterine_devices + sep +
+               injections + sep +
+               pills + sep +
+               male_condoms + sep +
+               female_condoms + sep +
+               emergency_controls + sep +
+               implants + sep +
+               new_clients + sep +
+               previous_clients + sep +
+               under25_visits + sep +
+               over25_visits + sep +
+               very_first_visits + sep +
+               short_term_method_visits + sep +
+               long_term_method_visits + sep +
+               hiv_counseling_clients + sep +
+               hiv_tests + sep +
+               hiv_positive_results + sep +
+               implant_removals + sep +
+               iud_removal;
     }
 
     /*
@@ -241,9 +241,26 @@ public class ProvidedServicesReport implements ReportPartInterface {
         }
 
         // various tests checking whether provided number are legit.
-       // if (total_malaria_cases > total_consultation) {
-       //     _errors.addElement("Cas de Palu supérieur au total toutes causes");
-       // }
+        int new_and_old_clients = new_clients + previous_clients;
+        int under_and_over_25 = under25_visits + over25_visits;
+        if (new_and_old_clients != under_and_over_25) {
+            _errors.addElement("Nb nouveaux+anciens clients ("+ new_and_old_clients +") différent de -25ans et +25ans ("+ under_and_over_25 +").");
+        }
+
+        int all_services = tubal_ligations + short_term_method_visits +
+                           long_term_method_visits + implant_removals + iud_removal;
+        if (new_and_old_clients != all_services) {
+            _errors.addElement("Nb nouveaux+anciens clients ("+ new_and_old_clients +") différent de somme des services ("+ all_services +").");
+        }
+
+        if (very_first_visits > new_clients) {
+            _errors.addElement("Nb 1ere visites ("+ very_first_visits +") supérieur aux nouveaux clients ("+ new_clients +").");
+        }
+
+        int iud_implants = intrauterine_devices + implants;
+        if (iud_implants != long_term_method_visits) {
+            _errors.addElement("Nb visites pour meth. longue durée ("+ long_term_method_visits +") différent de DIU+Implants ("+ iud_implants +").");
+        }
 
         if (_errors.size() == 0) {
             return true;
