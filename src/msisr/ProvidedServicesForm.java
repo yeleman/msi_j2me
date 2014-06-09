@@ -43,7 +43,7 @@ public class ProvidedServicesForm extends Form implements CommandListener {
     private TextField hiv_counseling_clients;
     private TextField hiv_tests;
     private TextField hiv_positive_results;
-    private TextField implant_removals;
+    private TextField implant_removal;
     private TextField iud_removal;
 
 public ProvidedServicesForm(MSIMIDlet midlet) {
@@ -73,7 +73,7 @@ public ProvidedServicesForm(MSIMIDlet midlet) {
     hiv_tests = new TextField("test VIH", null, MAX_SIZE, TextField.NUMERIC);
     hiv_positive_results = new TextField("Dépistés séropositifs", null, MAX_SIZE, TextField.NUMERIC);
     // non-CAP providing services
-    implant_removals = new TextField("Retrait d'implants", null, MAX_SIZE, TextField.NUMERIC);
+    implant_removal = new TextField("Retrait d'implants", null, MAX_SIZE, TextField.NUMERIC);
     iud_removal = new TextField("Retrait de DIU", null, MAX_SIZE, TextField.NUMERIC);
 
     // if user requested to continue an existing report
@@ -101,7 +101,7 @@ public ProvidedServicesForm(MSIMIDlet midlet) {
         hiv_counseling_clients.setString(valueForField(report.hiv_counseling_clients));
         hiv_tests.setString(valueForField(report.hiv_tests));
         hiv_positive_results.setString(valueForField(report.hiv_positive_results));
-        implant_removals.setString(valueForField(report.implant_removals));
+        implant_removal.setString(valueForField(report.implant_removal));
         iud_removal.setString(valueForField(report.iud_removal));
     }
 
@@ -125,7 +125,7 @@ public ProvidedServicesForm(MSIMIDlet midlet) {
     append(hiv_counseling_clients);
     append(hiv_tests);
     append(hiv_positive_results);
-    append(implant_removals);
+    append(implant_removal);
     append(iud_removal);
 
     addCommand(CMD_EXIT);
@@ -172,7 +172,7 @@ public ProvidedServicesForm(MSIMIDlet midlet) {
             hiv_counseling_clients .getString().length() == 0 ||
             hiv_tests.getString().length() == 0 ||
             hiv_positive_results.getString().length() == 0 ||
-            implant_removals.getString().length() == 0 ||
+            implant_removal.getString().length() == 0 ||
             iud_removal.getString().length() == 0) {
             return false;
         }
@@ -226,7 +226,7 @@ public ProvidedServicesForm(MSIMIDlet midlet) {
                               Integer.parseInt(hiv_counseling_clients .getString()),
                               Integer.parseInt(hiv_tests.getString()),
                               Integer.parseInt(hiv_positive_results.getString()),
-                              Integer.parseInt(implant_removals.getString()),
+                              Integer.parseInt(implant_removal.getString()),
                               Integer.parseInt(iud_removal.getString())
             );
 

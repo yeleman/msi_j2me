@@ -132,8 +132,8 @@ public class MSIReport {
         }
 
         // Implant Removal
-        if (provided_services.implant_removals != financial.implant_removal_qty) {
-            _errors.addElement("Retrait Implant: Quantité prestés ("+ provided_services.implant_removals + ") différent de Quantité financière ("+ financial.implant_removal_qty +").");
+        if (provided_services.implant_removal != financial.implant_removal_qty) {
+            _errors.addElement("Retrait Implant: Quantité prestés ("+ provided_services.implant_removal + ") différent de Quantité financière ("+ financial.implant_removal_qty +").");
         }
 
         if (!only_reports) {

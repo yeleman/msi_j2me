@@ -37,7 +37,7 @@ public class ProvidedServicesReport implements ReportPartInterface {
     public int hiv_counseling_clients = -1;
     public int hiv_tests = -1;
     public int hiv_positive_results = -1;
-    public int implant_removals = -1;
+    public int implant_removal = -1;
     public int iud_removal = -1;
 
     public ProvidedServicesReport() {
@@ -102,7 +102,7 @@ public class ProvidedServicesReport implements ReportPartInterface {
         hiv_counseling_clients = inputDataStream.readInt();
         hiv_tests = inputDataStream.readInt();
         hiv_positive_results = inputDataStream.readInt();
-        implant_removals = inputDataStream.readInt();
+        implant_removal = inputDataStream.readInt();
         iud_removal = inputDataStream.readInt();
 
         // close stream
@@ -159,7 +159,7 @@ public class ProvidedServicesReport implements ReportPartInterface {
         outputDataStream.writeInt(hiv_counseling_clients);
         outputDataStream.writeInt(hiv_tests);
         outputDataStream.writeInt(hiv_positive_results);
-        outputDataStream.writeInt(implant_removals);
+        outputDataStream.writeInt(implant_removal);
         outputDataStream.writeInt(iud_removal);
 
         // finish preparing stream
@@ -222,7 +222,7 @@ public class ProvidedServicesReport implements ReportPartInterface {
                hiv_counseling_clients + sep +
                hiv_tests + sep +
                hiv_positive_results + sep +
-               implant_removals + sep +
+               implant_removal + sep +
                iud_removal;
     }
 
@@ -248,7 +248,7 @@ public class ProvidedServicesReport implements ReportPartInterface {
         }
 
         int all_services = tubal_ligations + short_term_method_visits +
-                           long_term_method_visits + implant_removals + iud_removal;
+                           long_term_method_visits + implant_removal + iud_removal;
         if (new_and_old_clients != all_services) {
             _errors.addElement("Nb nouveaux+anciens clients ("+ new_and_old_clients +") différent de somme des services ("+ all_services +").");
         }
@@ -313,7 +313,7 @@ public class ProvidedServicesReport implements ReportPartInterface {
      * @param hiv_counseling_clients
      * @param hiv_tests
      * @param hiv_positive_results
-     * @param implant_removals
+     * @param implant_removal
      * @param iud_removal
      */
     public void setAll(int tubal_ligations,
@@ -334,7 +334,7 @@ public class ProvidedServicesReport implements ReportPartInterface {
                        int hiv_counseling_clients,
                        int hiv_tests,
                        int hiv_positive_results,
-                       int implant_removals,
+                       int implant_removal,
                        int iud_removal) {
 
     this.tubal_ligations = tubal_ligations;
@@ -355,7 +355,7 @@ public class ProvidedServicesReport implements ReportPartInterface {
     this.hiv_counseling_clients = hiv_counseling_clients;
     this.hiv_tests = hiv_tests;
     this.hiv_positive_results = hiv_positive_results;
-    this.implant_removals = implant_removals;
+    this.implant_removal = implant_removal;
     this.iud_removal = iud_removal;
     }
 
@@ -378,7 +378,7 @@ public class ProvidedServicesReport implements ReportPartInterface {
             this.hiv_counseling_clients != -1 &&
             this.hiv_tests != -1 &&
             this.hiv_positive_results != -1 &&
-            this.implant_removals != -1 &&
+            this.implant_removal != -1 &&
             this.iud_removal != -1) {
                 return true;
         }

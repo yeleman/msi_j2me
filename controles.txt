@@ -1,0 +1,29 @@
+services prestés (SP):
+   1. nouveau + ancien = âgés de 24 ans ou moins + 25 ans ou plus = 1 + LMS + PF court terme + PF long durée + Retrait d'implants + Retrait DIU
+   2. PF première fois <= Nouveau client
+   3. PF long durée = DIU + Implant 5ans
+
+Rapport Financier:
+    1. DIU = DIU (SP)
+       Implant  = Implant (SP)
+       Injectable = Injectable(SP)
+       pilule = pilule(SP)
+       Préservatif M = Préservatif M(SP)
+       Préservatif F = Préservatif F(SP)
+       tes VIH = tes VIH(SP)
+       Retrait DIU = Retrait DIU(SP)
+       Retrait implant = Retrait implant(SP)
+    2. Nombre * Prix unitaire >= Revenu mensuel net
+
+Stocks:
+    1. Stock en debut du mois + Quantité reçue / Achetée pendant le mois = Quantité consomme + Quantité perdue ou gatée
+
+    2. DIU(unité) = DIU (SP)
+       Implant(unité) = Implant (SP)
+       Injectable(unité) = Injectable(SP)
+       pilule(cycle) = pilule(SP)
+       Préservatif M (unité) = Préservatif M(SP)
+       Préservatif F(unité) = Préservatif F(SP)
+       tes VIH (unité) = tes VIH(SP)
+       Retrait DIU (unité) = Retrait DIU(SP)
+       Retrait implant (unité) = Retrait implant(SP)
