@@ -276,7 +276,11 @@ public class StocksReport implements ReportPartInterface {
     }
 
     public String encodeStringForSMS(String text) {
-        return this.replace(text, " ", "#");
+        String newtext = this.replace(text, " ", "#");
+        if (newtext.length() == 0) {
+            newtext = "-";
+        }
+        return newtext;
     }
 
     /*

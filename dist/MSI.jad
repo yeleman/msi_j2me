@@ -1,7 +1,7 @@
 MIDlet-1: MSIMIDlet,/msi-32-32.png,msisr.MSIMIDlet
 MIDlet-Description: Transmission des informations de routine sur le Paludisme au Mali
 MIDlet-Icon: msi-32-32.png
-MIDlet-Jar-Size: 50707
+MIDlet-Jar-Size: 50755
 MIDlet-Jar-URL: MSI.jar
 MIDlet-Name: MSI
 MIDlet-Vendor: YELEMAN S.A.R.L
