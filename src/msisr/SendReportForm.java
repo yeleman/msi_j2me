@@ -19,7 +19,7 @@ public class SendReportForm extends Form implements CommandListener {
     private MSIMIDlet midlet;
 
     private static final String[] monthList= {" --- ", "Janvier (01)", "Février (02)", "Mars (03)", "Avril (04)", "Mai (05)", "Juin (06)", "Juillet (07)", "Aout (08)", "Septembre (09)", "Octobre (10)", "Novembre (11)", "Décembre (12)"};
-    private static final String[] yearList = {" --- ", "2014", "2015", "2016", "2017", "2018", "2019", "2020"};
+    private static final String[] yearList = {" --- ", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"};
 
     private StringItem intro;
     private ChoiceGroup monthField;
@@ -52,6 +52,7 @@ public class SendReportForm extends Form implements CommandListener {
         addCommand(CMD_HELP);
         this.setCommandListener(this);
     }
+
 
     public boolean passwordIsValid() {
         if (passwordField.getString().indexOf(" ") == -1) {
@@ -90,6 +91,7 @@ public class SendReportForm extends Form implements CommandListener {
 
             Alert alert;
 
+
             // check password
             if (!this.passwordIsValid()) {
                 alert = new Alert("Mot de passe incorrect", "L'espace n'est " +
@@ -115,10 +117,30 @@ public class SendReportForm extends Form implements CommandListener {
             report.username = usernameField.getString().replace(' ', '_');
             report.password = passwordField.getString().replace(' ', '_');
             report.month = monthField.getSelectedIndex();
+            int year = -1;
             try {
-                report.year = Integer.parseInt(yearField.getString(yearField.getSelectedIndex()));
+                year = Integer.parseInt(yearField.getString(yearField.getSelectedIndex()));
             } catch (java.lang.NumberFormatException e) {
-                report.year = -1;
+                //int year = -1;
+            }
+            report.year = year;
+
+            if (SharedChecks.dateIsNotFuture(monthField.getSelectedIndex(),
+                                          year) != true) {
+                alert = new Alert("Période incorrect", "[La période] est dans le futur.", null,
+                        AlertType.ERROR);
+                alert.setTimeout(Alert.FOREVER);
+                this.midlet.display.setCurrent (alert, this);
+                return;
+            }
+
+            if (SharedChecks.dateIsNotPast(monthField.getSelectedIndex(),
+                                          year) != true) {
+                alert = new Alert("Période incorrect", "[La période] est dans le passé.", null,
+                        AlertType.ERROR);
+                alert.setTimeout(Alert.FOREVER);
+                this.midlet.display.setCurrent (alert, this);
+                return;
             }
 
             // check validity and exit if it fails
