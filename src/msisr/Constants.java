@@ -7,7 +7,7 @@ package msisr;
  */
 public class Constants {
 
-    public static final String version = "1.1b";
+    public static final String version = "1.1";
     public static final String server_number = "70062552";
     public static final String brand_name = "PF/MSI";
     public static final int username_min_length = 4;

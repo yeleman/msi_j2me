@@ -76,36 +76,36 @@ public StocksForm(MSIMIDlet midlet) {
     config = new Configuration();
 
     // creating al fields (blank)
-    intrauterine_devices_initial = new TextField("Quantité initiale", null, MAX_SIZE, TextField.NUMERIC);
-    intrauterine_devices_used = new TextField("Quantité utilisée", null, MAX_SIZE, TextField.NUMERIC);
+    intrauterine_devices_initial = new TextField("Stock début de mois", null, MAX_SIZE, TextField.NUMERIC);
+    intrauterine_devices_used = new TextField("Quantité consommée", null, MAX_SIZE, TextField.NUMERIC);
     intrauterine_devices_lost = new TextField("Quantité perdue", null, MAX_SIZE, TextField.NUMERIC);
     intrauterine_devices_received = new TextField("Quantité reçue", null, MAX_SIZE, TextField.NUMERIC);
-    implants_initial = new TextField("Quantité initiale", null, MAX_SIZE, TextField.NUMERIC);
-    implants_used = new TextField("Quantité utilisée", null, MAX_SIZE, TextField.NUMERIC);
+    implants_initial = new TextField("Stock début de mois", null, MAX_SIZE, TextField.NUMERIC);
+    implants_used = new TextField("Quantité consommée", null, MAX_SIZE, TextField.NUMERIC);
     implants_lost = new TextField("Quantité perdue", null, MAX_SIZE, TextField.NUMERIC);
     implants_received = new TextField("Quantité reçue", null, MAX_SIZE, TextField.NUMERIC);
-    injections_initial = new TextField("Quantité initiale", null, MAX_SIZE, TextField.NUMERIC);
-    injections_used = new TextField("Quantité utilisée", null, MAX_SIZE, TextField.NUMERIC);
+    injections_initial = new TextField("Stock début de mois", null, MAX_SIZE, TextField.NUMERIC);
+    injections_used = new TextField("Quantité consommée", null, MAX_SIZE, TextField.NUMERIC);
     injections_lost = new TextField("Quantité perdue", null, MAX_SIZE, TextField.NUMERIC);
     injections_received = new TextField("Quantité reçue", null, MAX_SIZE, TextField.NUMERIC);
-    pills_initial = new TextField("Quantité initiale", null, MAX_SIZE, TextField.NUMERIC);
-    pills_used = new TextField("Quantité utilisée", null, MAX_SIZE, TextField.NUMERIC);
+    pills_initial = new TextField("Stock début de mois", null, MAX_SIZE, TextField.NUMERIC);
+    pills_used = new TextField("Quantité consommée", null, MAX_SIZE, TextField.NUMERIC);
     pills_lost = new TextField("Quantité perdue", null, MAX_SIZE, TextField.NUMERIC);
     pills_received = new TextField("Quantité reçue", null, MAX_SIZE, TextField.NUMERIC);
-    male_condoms_initial = new TextField("Quantité initiale", null, MAX_SIZE, TextField.NUMERIC);
-    male_condoms_used = new TextField("Quantité utilisée", null, MAX_SIZE, TextField.NUMERIC);
+    male_condoms_initial = new TextField("Stock début de mois", null, MAX_SIZE, TextField.NUMERIC);
+    male_condoms_used = new TextField("Quantité consommée", null, MAX_SIZE, TextField.NUMERIC);
     male_condoms_lost = new TextField("Quantité perdue", null, MAX_SIZE, TextField.NUMERIC);
     male_condoms_received = new TextField("Quantité reçue", null, MAX_SIZE, TextField.NUMERIC);
-    female_condoms_initial = new TextField("Quantité initiale", null, MAX_SIZE, TextField.NUMERIC);
-    female_condoms_used = new TextField("Quantité utilisée", null, MAX_SIZE, TextField.NUMERIC);
+    female_condoms_initial = new TextField("Stock début de mois", null, MAX_SIZE, TextField.NUMERIC);
+    female_condoms_used = new TextField("Quantité consommée", null, MAX_SIZE, TextField.NUMERIC);
     female_condoms_lost = new TextField("Quantité perdue", null, MAX_SIZE, TextField.NUMERIC);
     female_condoms_received = new TextField("Quantité reçue", null, MAX_SIZE, TextField.NUMERIC);
-    hiv_tests_initial = new TextField("Quantité initiale", null, MAX_SIZE, TextField.NUMERIC);
-    hiv_tests_used = new TextField("Quantité utilisée", null, MAX_SIZE, TextField.NUMERIC);
+    hiv_tests_initial = new TextField("Stock début de mois", null, MAX_SIZE, TextField.NUMERIC);
+    hiv_tests_used = new TextField("Quantité consommée", null, MAX_SIZE, TextField.NUMERIC);
     hiv_tests_lost = new TextField("Quantité perdue", null, MAX_SIZE, TextField.NUMERIC);
     hiv_tests_received = new TextField("Quantité reçue", null, MAX_SIZE, TextField.NUMERIC);
-    pregnancy_tests_initial = new TextField("Quantité initiale", null, MAX_SIZE, TextField.NUMERIC);
-    pregnancy_tests_used = new TextField("Quantité utilisée", null, MAX_SIZE, TextField.NUMERIC);
+    pregnancy_tests_initial = new TextField("Stock début de mois", null, MAX_SIZE, TextField.NUMERIC);
+    pregnancy_tests_used = new TextField("Quantité consommée", null, MAX_SIZE, TextField.NUMERIC);
     pregnancy_tests_lost = new TextField("Quantité perdue", null, MAX_SIZE, TextField.NUMERIC);
     pregnancy_tests_received = new TextField("Quantité reçue", null, MAX_SIZE, TextField.NUMERIC);
     intrauterine_devices_observation = new TextField("Observations", null, MAX_OBS_SIZE, TextField.NON_PREDICTIVE);
@@ -247,7 +247,7 @@ public StocksForm(MSIMIDlet midlet) {
      * @return the <code>String</code> to attach to the field.
      */
     private String stringValueForField(String value) {
-        if (value == "-") {
+        if (value.equals("-")) {
             return "";
         }
         return String.valueOf(value);
@@ -300,7 +300,7 @@ public StocksForm(MSIMIDlet midlet) {
     public void commandAction(Command c, Displayable d) {
         // help command displays Help Form.
         if (c == CMD_HELP) {
-            HelpForm h = new HelpForm(this.midlet, this, "under_five");
+            HelpForm h = new HelpForm(this.midlet, this, "stocks");
             this.midlet.display.setCurrent(h);
         }
 

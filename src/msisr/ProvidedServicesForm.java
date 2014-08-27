@@ -55,10 +55,10 @@ public ProvidedServicesForm(MSIMIDlet midlet) {
     // CAP-providing services
     tubal_ligations = new TextField("Ligature des trompes (LMS)", null, MAX_SIZE, TextField.NUMERIC);
     intrauterine_devices = new TextField("Diapositif Intra-utérin (DIU)", null, MAX_SIZE, TextField.NUMERIC);
-    injections = new TextField("Injectables", null, MAX_SIZE, TextField.NUMERIC);
+    injections = new TextField("Injectables - 3 mois", null, MAX_SIZE, TextField.NUMERIC);
     pills = new TextField("Plaquettes Pilules (payant)", null, MAX_SIZE, TextField.NUMERIC);
-    male_condoms = new TextField("Masculins (payant)", null, MAX_SIZE, TextField.NUMERIC);
-    female_condoms = new TextField("Féminins (payant)", null, MAX_SIZE, TextField.NUMERIC);
+    male_condoms = new TextField("Pièces Préservatifs Masculins (payant)", null, MAX_SIZE, TextField.NUMERIC);
+    female_condoms = new TextField("Pièces Préservatifs Féminins (payant)", null, MAX_SIZE, TextField.NUMERIC);
     emergency_controls = new TextField("Contraception d'urgence (payant)", null, MAX_SIZE, TextField.NUMERIC);
     implants = new TextField("Implant 5 ans", null, MAX_SIZE, TextField.NUMERIC);
     // Clients related services
@@ -182,7 +182,7 @@ public ProvidedServicesForm(MSIMIDlet midlet) {
     public void commandAction(Command c, Displayable d) {
         // help command displays Help Form.
         if (c == CMD_HELP) {
-            HelpForm h = new HelpForm(this.midlet, this, "under_five");
+            HelpForm h = new HelpForm(this.midlet, this, "provided_services");
             this.midlet.display.setCurrent(h);
         }
 

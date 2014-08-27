@@ -22,9 +22,9 @@ public class FinancialForm extends Form implements CommandListener {
     private static final Command CMD_HELP = new Command ("Aide", Command.HELP, 2);
     private static final int MAX_SIZE = 5; // max no. of chars per field.
 
-    private static final String QTY_TXT = "Quantité";
+    private static final String QTY_TXT = "Nombre";
     private static final String PRICE_TXT = "Prix Unitaire";
-    private static final String REVENUE_TXT = "Revenu mensuel net";
+    private static final String REVENUE_TXT = "Revenu mensuel";
 
     public MSIMIDlet midlet;
 
