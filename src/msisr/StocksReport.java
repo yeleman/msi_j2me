@@ -52,6 +52,11 @@ public class StocksReport implements ReportPartInterface {
     public int pregnancy_tests_lost = -1;
     public int pregnancy_tests_received = -1;
 
+    public int emergency_controls_initial = -1;
+    public int emergency_controls_used = -1;
+    public int emergency_controls_lost = -1;
+    public int emergency_controls_received = -1;
+
     public String intrauterine_devices_observation = "-";
     public String implants_observation = "-";
     public String injections_observation = "-";
@@ -60,6 +65,7 @@ public class StocksReport implements ReportPartInterface {
     public String female_condoms_observation = "-";
     public String hiv_tests_observation = "-";
     public String pregnancy_tests_observation = "-";
+    public String emergency_controls_observation = "-";
 
     public StocksReport() {
         try {
@@ -138,6 +144,11 @@ public class StocksReport implements ReportPartInterface {
         pregnancy_tests_lost = inputDataStream.readInt();
         pregnancy_tests_received = inputDataStream.readInt();
 
+        emergency_controls_initial = inputDataStream.readInt();
+        emergency_controls_used = inputDataStream.readInt();
+        emergency_controls_lost = inputDataStream.readInt();
+        emergency_controls_received = inputDataStream.readInt();
+
         intrauterine_devices_observation = inputDataStream.readUTF();
         implants_observation = inputDataStream.readUTF();
         injections_observation = inputDataStream.readUTF();
@@ -146,6 +157,7 @@ public class StocksReport implements ReportPartInterface {
         female_condoms_observation = inputDataStream.readUTF();
         hiv_tests_observation = inputDataStream.readUTF();
         pregnancy_tests_observation = inputDataStream.readUTF();
+        emergency_controls_observation = inputDataStream.readUTF();
 
         // close stream
         inputStream.reset();
@@ -216,6 +228,11 @@ public class StocksReport implements ReportPartInterface {
         outputDataStream.writeInt(pregnancy_tests_lost);
         outputDataStream.writeInt(pregnancy_tests_received);
 
+        outputDataStream.writeInt(emergency_controls_initial);
+        outputDataStream.writeInt(emergency_controls_used);
+        outputDataStream.writeInt(emergency_controls_lost);
+        outputDataStream.writeInt(emergency_controls_received);
+
         outputDataStream.writeUTF(intrauterine_devices_observation);
         outputDataStream.writeUTF(implants_observation);
         outputDataStream.writeUTF(injections_observation);
@@ -224,6 +241,7 @@ public class StocksReport implements ReportPartInterface {
         outputDataStream.writeUTF(female_condoms_observation);
         outputDataStream.writeUTF(hiv_tests_observation);
         outputDataStream.writeUTF(pregnancy_tests_observation);
+        outputDataStream.writeUTF(emergency_controls_observation);
 
         // finish preparing stream
         outputDataStream.flush();
@@ -322,6 +340,11 @@ public class StocksReport implements ReportPartInterface {
                pregnancy_tests_used + sep +
                pregnancy_tests_lost + sep +
                pregnancy_tests_received + sep +
+               emergency_controls_initial + sep +
+               emergency_controls_used + sep +
+               emergency_controls_lost + sep +
+               emergency_controls_received + sep +
+
                this.encodeStringForSMS(intrauterine_devices_observation) + sep +
                this.encodeStringForSMS(implants_observation) + sep +
                this.encodeStringForSMS(injections_observation) + sep +
@@ -329,7 +352,8 @@ public class StocksReport implements ReportPartInterface {
                this.encodeStringForSMS(male_condoms_observation) + sep +
                this.encodeStringForSMS(female_condoms_observation) + sep +
                this.encodeStringForSMS(hiv_tests_observation) + sep +
-               this.encodeStringForSMS(pregnancy_tests_observation);
+               this.encodeStringForSMS(pregnancy_tests_observation) + sep +
+               this.encodeStringForSMS(emergency_controls_observation);
     }
 
     /*
@@ -393,6 +417,12 @@ public class StocksReport implements ReportPartInterface {
         int pregnancy_tests_available = pregnancy_tests_initial + pregnancy_tests_received;
         if (pregnancy_tests_consumed > pregnancy_tests_available) {
             _errors.addElement("Clearview: Utilisé+perdu ("+ pregnancy_tests_consumed +") supérieur à Initial+Reçue ("+ pregnancy_tests_available +").");
+        }
+
+        int emergency_controls_consumed = emergency_controls_used + emergency_controls_lost;
+        int emergency_controls_available = emergency_controls_initial + emergency_controls_received;
+        if (emergency_controls_consumed > emergency_controls_available) {
+            _errors.addElement("Contraception d'urgence: Utilisé+perdu ("+ emergency_controls_consumed +") supérieur à Initial+Reçue ("+ emergency_controls_available +").");
         }
 
         if (_errors.size() == 0) {
@@ -501,6 +531,11 @@ public class StocksReport implements ReportPartInterface {
                        int pregnancy_tests_used,
                        int pregnancy_tests_lost,
                        int pregnancy_tests_received,
+                       int emergency_controls_initial,
+                       int emergency_controls_used,
+                       int emergency_controls_lost,
+                       int emergency_controls_received,
+
                        String intrauterine_devices_observation,
                        String implants_observation,
                        String injections_observation,
@@ -508,7 +543,8 @@ public class StocksReport implements ReportPartInterface {
                        String male_condoms_observation,
                        String female_condoms_observation,
                        String hiv_tests_observation,
-                       String pregnancy_tests_observation) {
+                       String pregnancy_tests_observation,
+                       String emergency_controls_observation) {
 
         this.intrauterine_devices_initial = intrauterine_devices_initial;
         this.intrauterine_devices_used = intrauterine_devices_used;
@@ -542,6 +578,11 @@ public class StocksReport implements ReportPartInterface {
         this.pregnancy_tests_used = pregnancy_tests_used;
         this.pregnancy_tests_lost = pregnancy_tests_lost;
         this.pregnancy_tests_received = pregnancy_tests_received;
+        this.emergency_controls_initial = emergency_controls_initial;
+        this.emergency_controls_used = emergency_controls_used;
+        this.emergency_controls_lost = emergency_controls_lost;
+        this.emergency_controls_received = emergency_controls_received;
+
         this.intrauterine_devices_observation = intrauterine_devices_observation;
         this.implants_observation = implants_observation;
         this.injections_observation = injections_observation;
@@ -550,6 +591,7 @@ public class StocksReport implements ReportPartInterface {
         this.female_condoms_observation = female_condoms_observation;
         this.hiv_tests_observation = hiv_tests_observation;
         this.pregnancy_tests_observation = pregnancy_tests_observation;
+        this.emergency_controls_observation = emergency_controls_observation;
     }
 
     public boolean dataIsComplete() {
@@ -585,7 +627,11 @@ public class StocksReport implements ReportPartInterface {
             this.pregnancy_tests_initial != -1 &&
             this.pregnancy_tests_used != -1 &&
             this.pregnancy_tests_lost != -1 &&
-            this.pregnancy_tests_received != -1) {
+            this.pregnancy_tests_received != -1 &&
+            this.emergency_controls_initial != -1 &&
+            this.emergency_controls_used != -1 &&
+            this.emergency_controls_lost != -1 &&
+            this.emergency_controls_received != -1) {
                 return true;
         }
         return false;

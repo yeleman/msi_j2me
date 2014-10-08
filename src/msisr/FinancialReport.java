@@ -47,6 +47,10 @@ public class FinancialReport implements ReportPartInterface {
     public int implant_removal_price = -1;
     public int implant_removal_revenue = -1;
 
+    public int emergency_controls_qty = -1;
+    public int emergency_controls_price = -1;
+    public int emergency_controls_revenue = -1;
+    
     public FinancialReport() {
         try {
             this.initDB();
@@ -118,6 +122,9 @@ public class FinancialReport implements ReportPartInterface {
         implant_removal_qty = inputDataStream.readInt();
         implant_removal_price = inputDataStream.readInt();
         implant_removal_revenue = inputDataStream.readInt();
+        emergency_controls_qty = inputDataStream.readInt();
+        emergency_controls_price = inputDataStream.readInt();
+        emergency_controls_revenue = inputDataStream.readInt();
 
         // close stream
         inputStream.reset();
@@ -182,6 +189,9 @@ public class FinancialReport implements ReportPartInterface {
         outputDataStream.writeInt(implant_removal_qty);
         outputDataStream.writeInt(implant_removal_price);
         outputDataStream.writeInt(implant_removal_revenue);
+        outputDataStream.writeInt(emergency_controls_qty);
+        outputDataStream.writeInt(emergency_controls_price);
+        outputDataStream.writeInt(emergency_controls_revenue);
 
         // finish preparing stream
         outputDataStream.flush();
@@ -251,7 +261,10 @@ public class FinancialReport implements ReportPartInterface {
                iud_removal_revenue + sep +
                implant_removal_qty + sep +
                implant_removal_price + sep +
-               implant_removal_revenue;
+               implant_removal_revenue + sep +
+               emergency_controls_qty + sep +
+               emergency_controls_price + sep +
+               emergency_controls_revenue;
     }
 
     /*
@@ -304,7 +317,9 @@ public class FinancialReport implements ReportPartInterface {
         if ((implant_removal_qty * implant_removal_price) < implant_removal_revenue) {
             _errors.addElement("Retrait Implant: montant inférieur aux revenus net.");
         }
-
+        if ((emergency_controls_qty * emergency_controls_price) < emergency_controls_revenue) {
+            _errors.addElement("Contraception d'urgence: montant inférieur aux revenue net.");
+        }
         if (_errors.size() == 0) {
             return true;
         }
@@ -392,7 +407,10 @@ public class FinancialReport implements ReportPartInterface {
                        int iud_removal_revenue,
                        int implant_removal_qty,
                        int implant_removal_price,
-                       int implant_removal_revenue) {
+                       int implant_removal_revenue,
+                       int emergency_controls_qty,
+                       int emergency_controls_price,
+                       int emergency_controls_revenue) {
         this.intrauterine_devices_price = intrauterine_devices_price;
         this.intrauterine_devices_qty = intrauterine_devices_qty;
         this.intrauterine_devices_price = intrauterine_devices_price;
@@ -429,6 +447,9 @@ public class FinancialReport implements ReportPartInterface {
         this.implant_removal_qty = implant_removal_qty;
         this.implant_removal_price = implant_removal_price;
         this.implant_removal_revenue = implant_removal_revenue;
+        this.emergency_controls_qty = emergency_controls_qty;
+        this.emergency_controls_price  = emergency_controls_price;
+        this.emergency_controls_revenue = emergency_controls_revenue;
     }
 
     public boolean dataIsComplete() {
@@ -458,7 +479,10 @@ public class FinancialReport implements ReportPartInterface {
             this.iud_removal_revenue != -1 &&
             this.implant_removal_qty != -1 &&
             this.implant_removal_price != -1 &&
-            this.implant_removal_revenue != -1) {
+            this.implant_removal_revenue != -1 &&
+            this.emergency_controls_qty != -1 &&
+            this.emergency_controls_price != -1 &&
+            this.emergency_controls_revenue != -1) {
                 return true;
         }
         return false;

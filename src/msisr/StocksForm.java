@@ -68,6 +68,11 @@ public class StocksForm extends Form implements CommandListener {
     private TextField female_condoms_observation;
     private TextField hiv_tests_observation;
     private TextField pregnancy_tests_observation;
+    private TextField emergency_controls_initial;
+    private TextField emergency_controls_used;
+    private TextField emergency_controls_lost;
+    private TextField emergency_controls_received;
+    private TextField emergency_controls_observation;
 
 public StocksForm(MSIMIDlet midlet) {
     super("Rapport Stocks");
@@ -117,6 +122,12 @@ public StocksForm(MSIMIDlet midlet) {
     hiv_tests_observation = new TextField("Observations", null, MAX_OBS_SIZE, TextField.NON_PREDICTIVE);
     pregnancy_tests_observation = new TextField("Observations", null, MAX_OBS_SIZE, TextField.NON_PREDICTIVE);
 
+    emergency_controls_initial = new TextField("Stock début de mois", null, MAX_SIZE, TextField.NUMERIC);
+    emergency_controls_used = new TextField("Quantité consommée", null, MAX_SIZE, TextField.NUMERIC);
+    emergency_controls_lost = new TextField("Quantité perdue", null, MAX_SIZE, TextField.NUMERIC);
+    emergency_controls_received = new TextField("Quantité reçue", null, MAX_SIZE, TextField.NUMERIC);
+    emergency_controls_observation = new TextField("Observations", null, MAX_OBS_SIZE, TextField.NON_PREDICTIVE);
+
     // if user requested to continue an existing report
     if (config.get("has_data").equalsIgnoreCase("true")) {
         // create an report object from store
@@ -156,6 +167,11 @@ public StocksForm(MSIMIDlet midlet) {
         pregnancy_tests_used.setString(valueForField(report.pregnancy_tests_used));
         pregnancy_tests_lost.setString(valueForField(report.pregnancy_tests_lost));
         pregnancy_tests_received.setString(valueForField(report.pregnancy_tests_received));
+        emergency_controls_initial.setString(valueForField(report.emergency_controls_initial));
+        emergency_controls_used.setString(valueForField(report.emergency_controls_used));
+        emergency_controls_lost.setString(valueForField(report.emergency_controls_lost));
+        emergency_controls_received.setString(valueForField(report.emergency_controls_received));
+
         intrauterine_devices_observation.setString(stringValueForField(report.intrauterine_devices_observation));
         implants_observation.setString(stringValueForField(report.implants_observation));
         injections_observation.setString(stringValueForField(report.injections_observation));
@@ -164,6 +180,7 @@ public StocksForm(MSIMIDlet midlet) {
         female_condoms_observation.setString(stringValueForField(report.female_condoms_observation));
         hiv_tests_observation.setString(stringValueForField(report.hiv_tests_observation));
         pregnancy_tests_observation.setString(stringValueForField(report.hiv_tests_observation));
+        emergency_controls_observation.setString(stringValueForField(report.emergency_controls_observation));
     }
 
     // add fields to forms
@@ -222,6 +239,13 @@ public StocksForm(MSIMIDlet midlet) {
     append(pregnancy_tests_used);
     append(pregnancy_tests_lost);
     append(pregnancy_tests_observation);
+
+    append("Contraception urg. (Unité)");
+    append(emergency_controls_initial);
+    append(emergency_controls_received);
+    append(emergency_controls_used);
+    append(emergency_controls_lost);
+    append(emergency_controls_observation);
 
     addCommand(CMD_EXIT);
     addCommand(CMD_SAVE);
@@ -291,7 +315,11 @@ public StocksForm(MSIMIDlet midlet) {
             pregnancy_tests_initial.getString().length() == 0 ||
             pregnancy_tests_used.getString().length() == 0 ||
             pregnancy_tests_lost.getString().length() == 0 ||
-            pregnancy_tests_received.getString().length() == 0) {
+            pregnancy_tests_received.getString().length() == 0 ||
+            emergency_controls_initial.getString().length() == 0 ||
+            emergency_controls_used.getString().length() == 0 ||
+            emergency_controls_lost.getString().length() == 0 ||
+            emergency_controls_received.getString().length() == 0) {
             return false;
         }
         return true;
@@ -357,6 +385,10 @@ public StocksForm(MSIMIDlet midlet) {
                               Integer.parseInt(pregnancy_tests_used.getString()),
                               Integer.parseInt(pregnancy_tests_lost.getString()),
                               Integer.parseInt(pregnancy_tests_received.getString()),
+                              Integer.parseInt(emergency_controls_initial.getString()),
+                              Integer.parseInt(emergency_controls_used.getString()),
+                              Integer.parseInt(emergency_controls_lost.getString()),
+                              Integer.parseInt(emergency_controls_received.getString()),
                               intrauterine_devices_observation.getString(),
                               implants_observation.getString(),
                               injections_observation.getString(),
@@ -364,7 +396,8 @@ public StocksForm(MSIMIDlet midlet) {
                               male_condoms_observation.getString(),
                               female_condoms_observation.getString(),
                               hiv_tests_observation.getString(),
-                              pregnancy_tests_observation.getString());
+                              pregnancy_tests_observation.getString(),
+                              emergency_controls_observation.getString());
             // check for errors and display first error
             if (!under_five.dataIsValid()) {
                 alert = new Alert("Données incorrectes!", under_five.errorMessage(), null, AlertType.ERROR);

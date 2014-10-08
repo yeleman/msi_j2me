@@ -56,6 +56,10 @@ public class FinancialForm extends Form implements CommandListener {
     private TextField implant_removal_qty;
     private TextField implant_removal_price;
     private TextField implant_removal_revenue;
+    private TextField emergency_controls_qty;
+    private TextField emergency_controls_price;
+    private TextField emergency_controls_revenue;
+
 
 public FinancialForm(MSIMIDlet midlet) {
     super("Rapport Financier");
@@ -91,6 +95,9 @@ public FinancialForm(MSIMIDlet midlet) {
     implant_removal_qty = new TextField(QTY_TXT, null, MAX_SIZE, TextField.NUMERIC);
     implant_removal_price = new TextField(PRICE_TXT, null, MAX_SIZE, TextField.NUMERIC);
     implant_removal_revenue = new TextField(REVENUE_TXT, null, MAX_SIZE, TextField.NUMERIC);
+    emergency_controls_qty = new TextField(QTY_TXT, null, MAX_SIZE, TextField.NUMERIC);
+    emergency_controls_price = new TextField(PRICE_TXT, null, MAX_SIZE, TextField.NUMERIC);
+    emergency_controls_revenue = new TextField(REVENUE_TXT, null, MAX_SIZE, TextField.NUMERIC);
 
     // if user requested to continue an existing report
     if (config.get("has_data").equalsIgnoreCase("true")) {
@@ -126,6 +133,9 @@ public FinancialForm(MSIMIDlet midlet) {
         implant_removal_qty.setString(valueForField(report.implant_removal_qty));
         implant_removal_price.setString(valueForField(report.implant_removal_price));
         implant_removal_revenue.setString(valueForField(report.implant_removal_revenue));
+        emergency_controls_qty.setString(valueForField(report.emergency_controls_qty));
+        emergency_controls_price.setString(valueForField(report.emergency_controls_price));
+        emergency_controls_revenue.setString(valueForField(report.emergency_controls_revenue));
     }
 
     // add fields to forms
@@ -165,6 +175,10 @@ public FinancialForm(MSIMIDlet midlet) {
     append(implant_removal_qty);
     append(implant_removal_price);
     append(implant_removal_revenue);
+    append("Contraception d'urgence");
+    append(emergency_controls_qty);
+    append(emergency_controls_price);
+    append(emergency_controls_revenue);
 
     addCommand(CMD_EXIT);
     addCommand(CMD_SAVE);
@@ -217,7 +231,10 @@ public FinancialForm(MSIMIDlet midlet) {
             iud_removal_revenue.getString().length() == 0 ||
             implant_removal_qty.getString().length() == 0 ||
             implant_removal_price.getString().length() == 0 ||
-            implant_removal_revenue.getString().length() == 0) {
+            implant_removal_revenue.getString().length() == 0 ||
+            emergency_controls_qty.getString().length() == 0 ||
+            emergency_controls_price.getString().length() == 0 ||
+            emergency_controls_revenue.getString().length() == 0) {
             return false;
         }
         return true;
@@ -277,7 +294,10 @@ public FinancialForm(MSIMIDlet midlet) {
                              Integer.parseInt(iud_removal_revenue.getString()),
                              Integer.parseInt(implant_removal_qty.getString()),
                              Integer.parseInt(implant_removal_price.getString()),
-                             Integer.parseInt(implant_removal_revenue.getString()));
+                             Integer.parseInt(implant_removal_revenue.getString()),
+                             Integer.parseInt(emergency_controls_qty.getString()),
+                             Integer.parseInt(emergency_controls_price.getString()),
+                             Integer.parseInt(emergency_controls_revenue.getString()));
             // check for errors and display first error
             if (!financial.dataIsValid()) {
                 alert = new Alert("Données incorrectes!", financial.errorMessage(), null, AlertType.ERROR);
